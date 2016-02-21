@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{332799FF-0EBB-4DE8-9D22-D15F7E439159}</ProjectGuid>
+    <ProjectGuid>{838A9F5F-8681-494C-A0A1-91A08BB185C8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>power_grid</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
@@ -146,7 +146,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

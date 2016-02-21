@@ -11,6 +11,7 @@ v for volatile
 s for static
 i for indexes and iterators
 e for events
+g for globals
 
 _i for integer
 _f for float
