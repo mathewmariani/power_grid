@@ -1,0 +1,8 @@
+#pragma once
+
+#define STARTING_ELECTRO 50
+
+#define STARTING_COAL 24
+#define STARTING_OIL 18
+#define STARTING_GARBAGE 6
+#define STARTING_URANIUM 2
