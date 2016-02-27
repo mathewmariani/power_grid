@@ -147,12 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CResourceMarket.cpp" />
     <ClCompile Include="include\pugixml.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CResourceMarket.h" />
     <ClInclude Include="shareddef.h" />
     <ClInclude Include="util.h" />
