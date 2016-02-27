@@ -19,6 +19,12 @@
     <Filter Include="Source Files\util">
       <UniqueIdentifier>{ec877207-10b0-44e3-b7e6-98f76c11a859}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\game">
+      <UniqueIdentifier>{399e88a3-17a9-49c2-b969-4896d2d24759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{fe6ca0e2-da88-40b9-b422-18a03ddef3a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -30,10 +36,24 @@
     <ClCompile Include="include\pugixml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CResourceMarket.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
+    <ClInclude Include="shareddef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CResourceMarket.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="deck.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
   </ItemGroup>
 </Project>
