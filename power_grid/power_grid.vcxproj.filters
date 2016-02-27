@@ -42,6 +42,12 @@
     <ClCompile Include="CPlayer.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
+    <ClCompile Include="CDeck.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="CCard.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -54,6 +60,12 @@
       <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="CPlayer.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CCard.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CDeck.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
   </ItemGroup>
