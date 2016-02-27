@@ -48,6 +48,9 @@
     <ClCompile Include="CCard.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
+    <ClCompile Include="CGame.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="CDeck.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CGame.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
   </ItemGroup>

@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="CCard.cpp" />
     <ClCompile Include="CDeck.cpp" />
+    <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CResourceMarket.cpp" />
     <ClCompile Include="include\pugixml.cpp" />
@@ -158,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="CCard.h" />
     <ClInclude Include="CDeck.h" />
+    <ClInclude Include="CGame.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CResourceMarket.h" />
     <ClInclude Include="shareddef.h" />

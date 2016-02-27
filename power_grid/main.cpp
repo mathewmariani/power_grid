@@ -1,35 +1,43 @@
 #include <iostream>
+#include "CGame.h"
 
 // Testing
-#include "CResourceMarket.h"
-#include "CPlayer.h"
-#include "CDeck.h"
-#include "CCard.h"
+//#include "CResourceMarket.h"
+//#include "CPlayer.h"
+//#include "CDeck.h"
+//#include "CCard.h"
 
 int main() {
-	std::cout << "Welcome to Power Grid\n\n";
+	std::cout << "Welcome to Power Grid!\n\n";
 
-	// take a look at the market
-	PrintResourceMarket();
+	// create driver class
+	CGame game;
 
-	CPlayer player("Mat");
-	player.Print();
+	game.Initialize();
 
-	// buy some stuff
-	player.AttemptToBuyCoal();
-	player.AttemptToBuyOil();
-	player.AttemptToBuyGarbage();
-	player.AttemptToBuyUranium();
+	//std::cout << "Welcome to Power Grid\n\n";
 
-	// look at all out loot
-	player.Print();
+	//// take a look at the market
+	//PrintResourceMarket();
 
-	// take a look at the market
-	PrintResourceMarket();
+	//CPlayer player("Mat");
+	//player.Print();
 
-	// Test the deck
-	CDeck deck;
-	deck.Draw().Print();
+	//// buy some stuff
+	//player.AttemptToBuyCoal();
+	//player.AttemptToBuyOil();
+	//player.AttemptToBuyGarbage();
+	//player.AttemptToBuyUranium();
+
+	//// look at all out loot
+	//player.Print();
+
+	//// take a look at the market
+	//PrintResourceMarket();
+
+	//// Test the deck
+	//CDeck deck;
+	//deck.Draw().Print();
 
 	return 0;
 }
