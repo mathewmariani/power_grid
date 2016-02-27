@@ -3,6 +3,8 @@
 // Testing
 #include "CResourceMarket.h"
 #include "CPlayer.h"
+#include "CDeck.h"
+#include "CCard.h"
 
 int main() {
 	std::cout << "Welcome to Power Grid\n\n";
@@ -24,6 +26,10 @@ int main() {
 
 	// take a look at the market
 	PrintResourceMarket();
+
+	// Test the deck
+	CDeck deck;
+	deck.Draw().Print();
 
 	return 0;
 }
