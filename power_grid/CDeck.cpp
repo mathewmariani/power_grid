@@ -33,3 +33,14 @@ CCard CDeck::Draw() {
 	m_iCurrentCard++;
 	return temp;
 }
+
+CCard CDeck::FindCard(int number) {
+	int len = m_vDeck.size();
+	for (int i = 0; i < len; i++)
+		if (m_vDeck[i].GetNumber() == number)
+			return m_vDeck[i];
+
+	std::cout << "!!! ERROR: Card not found.";
+	CCard card;
+	return card;
+}

@@ -5,7 +5,7 @@ short g_iOilCount = STARTING_OIL;
 short g_iGarbageCount = STARTING_GARBAGE;
 short g_iUraniumCount = STARTING_URANIUM;
 
-void ResourceMarketBuyResource(ResourceType_e resource) {
+void ResourceMarketSellResource(ResourceType_e resource) {
 	switch (resource) {
 	case RESOURCE_COAL:
 		g_iCoalCount--;
@@ -24,24 +24,6 @@ void ResourceMarketBuyResource(ResourceType_e resource) {
 	}
 }
 
-void ResourceMarketSellResource(ResourceType_e resource) {
-	switch (resource) {
-	case RESOURCE_COAL:
-		g_iCoalCount++;
-		break;
-	case RESOURCE_OIL:
-		g_iOilCount++;
-		break;
-	case RESOURCE_GARBAGE:
-		g_iGarbageCount++;
-		break;
-	case RESOURCE_URANIUM:
-		g_iUraniumCount++;
-		break;
-	default:
-		break;
-	}
-}
 
 void PrintResourceMarket() {
 	std::cout << "==============================" << "\n";

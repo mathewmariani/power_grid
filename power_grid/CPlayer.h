@@ -1,11 +1,18 @@
 #pragma once
 
 #include "CResourceMarket.h"
+#include "CCard.h"
+#include "CDeck.h"
 #include "base.h"
 
 enum BuyResult_e {
 	BUY_BOUGHT,
 	BUY_CANT_AFFORD,
+};
+
+enum GenerateResult_e {
+	GENERATE_NOT_ENOUGH_RESOURCE,
+	GENERATE_SUCCEED,
 };
 
 class CPlayer {
@@ -29,7 +36,7 @@ public:
 
 	// override << Operator
 	void Print() {
-		std::cout << "==============================" << "\n";
+		std::cout << "Player Info===================" << "\n";
 		std::cout << "NAME:\t\t" << m_sName << "\n\n";
 		std::cout << "MONEY:\t\t" << m_iMoney << "\n";
 		std::cout << "COAL:\t\t" << m_iCoal << "\n";
@@ -44,13 +51,24 @@ public:
 	BuyResult_e AttemptToBuyGarbage();
 	BuyResult_e AttemptToBuyUranium();
 
+	BuyResult_e AttemptToBuyPlantCard(CDeck* deck, int cardNumber);
+
+	GenerateResult_e GenerateEletricity(int cardNum);
+
 private:
 	std::string m_sName;
 
-	// Resources
 	int m_iMoney;
+
+	// Resources
 	int m_iCoal;
 	int m_iOil;
 	int m_iGarbage;
 	int m_iUranium;
+
+	//Plant cards
+	CCard m_iCard[3];
+	int m_iNumberOfPlantCards;
+
+	int m_iNumberOfCitiesPoweredThisTurn;
 };

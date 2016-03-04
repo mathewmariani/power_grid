@@ -9,6 +9,7 @@ public:
 	~CDeck();
 
 	CCard Draw();
+	CCard FindCard(int number);
 
 private:
 	std::vector<CCard> m_vDeck;
