@@ -7,7 +7,10 @@ CPlayer::CPlayer(std::string name) :
 	m_iCoal(0),
 	m_iOil(0),
 	m_iGarbage(0),
-	m_iUranium(0) {
+	m_iUranium(0),
+	m_iCard(),
+	m_iNumberOfPlantCards(0),
+	m_iNumberOfCitiesPoweredThisTurn(0) {
 
 }
 
@@ -149,4 +152,95 @@ BuyResult_e CPlayer::AttemptToBuyUranium() {
 
 		return BUY_BOUGHT;
 	}
+}
+
+BuyResult_e CPlayer::AttemptToBuyPlantCard(CDeck* deck, int cardNumber) {
+	CCard card = deck->FindCard(cardNumber);
+	int cardPrice = card.GetCost();
+
+	if (GetMoney() < cardPrice) {
+		std::cout << "#Not_Enough_Money\n";
+		return BUY_CANT_AFFORD;
+	}
+
+	else if (cardPrice == 0) {
+		std::cout << "#Not_Enough_Resources\n";
+		return BUY_CANT_AFFORD;
+	}
+
+	else {
+		m_iCard[m_iNumberOfPlantCards] = card;
+		m_iMoney -= cardPrice;
+		m_iNumberOfPlantCards++;
+
+		std::cout << "#Bought_Plant_Card_Number" << cardNumber;
+		return BUY_BOUGHT;
+	}
+}
+
+GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
+	CCard card = m_iCard[cardNum];
+	int fuelType = card.GetResources();
+	int cost = card.GetCost();
+	switch (fuelType) {
+		//clean energy
+	case 0:
+		m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+		return GENERATE_SUCCEED;
+
+		//coal
+	case 1:
+		if (m_iCoal < cost)
+			return GENERATE_NOT_ENOUGH_RESOURCE;
+		else {
+			m_iCoal -= cost;
+			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+			return GENERATE_SUCCEED;
+		}
+
+		//oil
+	case 2:
+		if (m_iOil < cost)
+			return GENERATE_NOT_ENOUGH_RESOURCE;
+		else {
+			m_iOil -= cost;
+			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+			return GENERATE_SUCCEED;
+		}
+
+		//hybrid
+	case 3:
+		if (m_iCoal < cost) {
+			if (m_iOil < cost)
+				return GENERATE_NOT_ENOUGH_RESOURCE;
+			else
+				m_iOil -= cost;
+		}
+		else {
+			m_iCoal -= cost;
+			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+			return GENERATE_SUCCEED;
+		}
+
+		//garbage
+	case 4:
+		if (m_iGarbage < cost)
+			return GENERATE_NOT_ENOUGH_RESOURCE;
+		else {
+			m_iGarbage -= cost;
+			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+			return GENERATE_SUCCEED;
+		}
+
+		//uranium
+	case 8:
+		if (m_iUranium < cost)
+			return GENERATE_NOT_ENOUGH_RESOURCE;
+		else {
+			m_iUranium -= cost;
+			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+			return GENERATE_SUCCEED;
+		}
+	}
+
 }

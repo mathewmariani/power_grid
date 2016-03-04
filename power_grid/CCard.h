@@ -20,7 +20,7 @@ public:
 
 	// override << Operator
 	void Print() {
-		std::cout << "==============================" << "\n";
+		std::cout << "Card Info=====================" << "\n";
 		std::cout << "NUMBER:\t\t" << m_iNumber << "\n\n";
 		std::cout << "COST:\t\t" << m_iResourceCost << "\n";
 		std::cout << "RESOURCES:\t" << m_iResources << "\n";

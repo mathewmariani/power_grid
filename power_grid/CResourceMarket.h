@@ -16,7 +16,6 @@ enum ResourceType_e {
 	RESOURCE_URANIUM = (1 << 4),
 };
 
-void ResourceMarketBuyResource(ResourceType_e resource);
 void ResourceMarketSellResource(ResourceType_e resource);
 void PrintResourceMarket();
 
@@ -26,31 +25,17 @@ extern short g_iGarbageCount;
 extern short g_iUraniumCount;
 
 inline int CostOfCoal() {
-	return (int)(floor(9 - (g_iCoalCount / 3)));
+	return (int)(9 - (g_iCoalCount + 2) / 3);
 }
 
 inline int CostOfOil() {
-	return (int)(floor(9 - (g_iOilCount / 3)));
+	return (int)(9 - (g_iOilCount + 2) / 3);
 }
 
 inline int CostOfGarbage() {
-	return (int)(floor(9 - (g_iGarbageCount / 3)));
+	return (int)(9 - (g_iGarbageCount + 2) / 3);
 }
 
 inline int CostOfUranium() {
-	if (g_iUraniumCount == 1) {
-		return 16;
-	}
-	else if (g_iUraniumCount == 2) {
-		return 14;
-	}
-	else if (g_iUraniumCount == 3) {
-		return 12;
-	}
-	else if (g_iUraniumCount == 4) {
-		return 10;
-	}
-	else {
-		return (int)(13 - g_iUraniumCount);
-	}
+	return (int)(18 - g_iUraniumCount * 2);
 }
