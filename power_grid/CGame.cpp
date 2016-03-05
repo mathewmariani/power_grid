@@ -34,7 +34,8 @@ void CGame::Initialize() {
 
 	// Test the deck
 	CDeck deck;
-	deck.Draw().Print();
+	m_vPlayers[0].AttemptToBuyPlantCard(&deck, 3);
+	m_vPlayers[1].AttemptToBuyPlantCard(&deck, 4);
 }
 
 int CGame::NumberOfPlayers() {
@@ -71,3 +72,109 @@ void CGame::InitializeDeck() {
 
 }
 
+void CGame::SavePlayers() {
+	pugi::xml_document doc;
+
+	auto declarationNode = doc.append_child(pugi::node_declaration);
+	declarationNode.append_attribute("version") = "1.0";
+
+	auto root = doc.append_child("playerList");
+
+	for (int i = 0; i < NumberOfPlayers(); i++) {
+		std::string name = m_vPlayers[i].GetName();
+		int money = m_vPlayers[i].GetMoney();
+		int coal = m_vPlayers[i].GetCoal();
+		int oil = m_vPlayers[i].GetOil();
+		int garbage = m_vPlayers[i].GetGarbage();
+		int uranium = m_vPlayers[i].GetUranium();
+		std::vector<CCard> card = m_vPlayers[i].GetCard();
+
+		auto tempPlayer = root.append_child("player");
+		tempPlayer.append_attribute("name") = name.c_str();
+		tempPlayer.append_attribute("money") = money;
+		tempPlayer.append_attribute("coal") = coal;
+		tempPlayer.append_attribute("oil") = oil;
+		tempPlayer.append_attribute("garbage") = garbage;
+		tempPlayer.append_attribute("uranium") = uranium;
+
+		for (int j = 0; j < card.size(); j++) {
+			int number = m_vPlayers[i].GetCard()[j].GetNumber();
+			int cost = m_vPlayers[i].GetCard()[j].GetCost();
+			int payment = m_vPlayers[i].GetCard()[j].GetResources();
+			int powers = m_vPlayers[i].GetCard()[j].GetCitiesPowered();
+
+			auto tempCard = tempPlayer.append_child("card");
+			tempCard.append_attribute("number") = number;
+			tempCard.append_attribute("cost") = cost;
+			tempCard.append_attribute("payment") = payment;
+			tempCard.append_attribute("powers") = powers;
+		}
+	}
+
+	doc.save_file("data/player/players.xml");
+}
+
+void CGame::LoadPlayers() {
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file("data/player/players.xml");
+	pugi::xml_node player_node = doc.child("playerList");
+
+	for (pugi::xml_node player = player_node.first_child(); player; player = player.next_sibling()) {
+
+		//parsing cards
+		std::vector<CCard> tempCard;
+		for (pugi::xml_node card = player.first_child(); card; card = card.next_sibling()) {
+			tempCard.push_back(CCard(
+				XMLParseInt(card.attribute("number")),
+				XMLParseInt(card.attribute("cost")),
+				XMLParseInt(card.attribute("payment")),
+				XMLParseInt(card.attribute("powers"))
+				));
+		}
+
+		m_vPlayers.push_back(CPlayer(
+			XMLParseString(player.attribute("name")),
+			XMLParseInt(player.attribute("money")),
+			XMLParseInt(player.attribute("coal")),
+			XMLParseInt(player.attribute("oil")),
+			XMLParseInt(player.attribute("garbage")),
+			XMLParseInt(player.attribute("uranium")),
+			tempCard
+			));
+	}
+
+}
+
+void CGame::LoadPlayers(std::string name) {
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file("data/player/players.xml");
+	pugi::xml_node player_node = doc.child("playerList");
+
+	for (pugi::xml_node player = player_node.first_child(); player; player = player.next_sibling()) {
+		if (std::strcmp(XMLParseString(player.attribute("name")).c_str(), name.c_str()) == 0) {
+			
+			//parsing cards
+			std::vector<CCard> tempCard;
+			for (pugi::xml_node card = player.first_child(); card; card = card.next_sibling()) {
+				tempCard.push_back(CCard(
+					XMLParseInt(card.attribute("number")),
+					XMLParseInt(card.attribute("cost")),
+					XMLParseInt(card.attribute("payment")),
+					XMLParseInt(card.attribute("powers"))
+					));
+			}
+
+			m_vPlayers.push_back(CPlayer(
+				XMLParseString(player.attribute("name")),
+				XMLParseInt(player.attribute("money")),
+				XMLParseInt(player.attribute("coal")),
+				XMLParseInt(player.attribute("oil")),
+				XMLParseInt(player.attribute("garbage")),
+				XMLParseInt(player.attribute("uranium")),
+				tempCard
+				));
+			break;
+		}
+	}
+
+}

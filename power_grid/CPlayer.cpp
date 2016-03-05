@@ -8,11 +8,24 @@ CPlayer::CPlayer(std::string name) :
 	m_iOil(0),
 	m_iGarbage(0),
 	m_iUranium(0),
-	m_iCard(),
-	m_iNumberOfPlantCards(0),
+	m_vCard(),
+	m_vHouse(),
 	m_iNumberOfCitiesPoweredThisTurn(0) {
 
 }
+
+CPlayer::CPlayer(std::string name, int money, int coal, int oil, int garbage, int uranium, std::vector<CCard> card) :
+	m_sName(name),
+	m_iCoal(coal),
+	m_iOil(oil),
+	m_iGarbage(garbage),
+	m_iUranium(uranium),
+	m_vCard(card),
+	m_vHouse(),
+	m_iNumberOfCitiesPoweredThisTurn(0) {
+
+}
+
 
 CPlayer::~CPlayer() {
 
@@ -42,6 +55,10 @@ int CPlayer::GetUranium() {
 	return m_iUranium;
 }
 
+std::vector<CCard> CPlayer::GetCard() {
+	return m_vCard;
+}
+
 const std::string CPlayer::GetName() const {
 	return m_sName;
 }
@@ -66,6 +83,10 @@ const int CPlayer::GetUranium() const {
 	return m_iUranium;
 }
 
+const std::vector<CCard> CPlayer::GetCard() const {
+	return m_vCard;
+}
+
 BuyResult_e CPlayer::AttemptToBuyCoal() {
 	int iCoalPrice = CostOfCoal();
 
@@ -78,7 +99,7 @@ BuyResult_e CPlayer::AttemptToBuyCoal() {
 		return BUY_CANT_AFFORD;
 	}
 	else {
-		ResourceMarketBuyResource(RESOURCE_COAL);
+		ResourceMarketSellResource(RESOURCE_COAL);
 		m_iMoney -= iCoalPrice;
 		m_iCoal++;
 
@@ -100,7 +121,7 @@ BuyResult_e CPlayer::AttemptToBuyOil() {
 		return BUY_CANT_AFFORD;
 	}
 	else {
-		ResourceMarketBuyResource(RESOURCE_OIL);
+		ResourceMarketSellResource(RESOURCE_OIL);
 		m_iMoney -= iOilPrice;
 		m_iOil++;
 
@@ -122,7 +143,7 @@ BuyResult_e CPlayer::AttemptToBuyGarbage() {
 		return BUY_CANT_AFFORD;
 	}
 	else {
-		ResourceMarketBuyResource(RESOURCE_GARBAGE);
+		ResourceMarketSellResource(RESOURCE_GARBAGE);
 		m_iMoney -= iGarbagePrice;
 		m_iGarbage++;
 
@@ -144,7 +165,7 @@ BuyResult_e CPlayer::AttemptToBuyUranium() {
 		return BUY_CANT_AFFORD;
 	}
 	else {
-		ResourceMarketBuyResource(RESOURCE_URANIUM);
+		ResourceMarketSellResource(RESOURCE_URANIUM);
 		m_iMoney -= iUraniumPrice;
 		m_iUranium++;
 
@@ -164,24 +185,24 @@ BuyResult_e CPlayer::AttemptToBuyPlantCard(CDeck* deck, int cardNumber) {
 	}
 
 	else if (cardPrice == 0) {
-		std::cout << "#Not_Enough_Resources\n";
+		std::cout << "#Plant_Card_Not_Available\n";
 		return BUY_CANT_AFFORD;
 	}
 
 	else {
-		m_iCard[m_iNumberOfPlantCards] = card;
+		m_vCard.push_back(card);
 		m_iMoney -= cardPrice;
-		m_iNumberOfPlantCards++;
 
-		std::cout << "#Bought_Plant_Card_Number" << cardNumber;
+		std::cout << "#Bought_Plant_Card_Number" << cardNumber << "\n";
 		return BUY_BOUGHT;
 	}
 }
 
 GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
-	CCard card = m_iCard[cardNum];
+	CCard card = m_vCard[cardNum];
 	int fuelType = card.GetResources();
 	int cost = card.GetCost();
+
 	switch (fuelType) {
 		//clean energy
 	case 0:
@@ -243,4 +264,85 @@ GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
 		}
 	}
 
+}
+
+//According to the cities powered this turn, players get the corresponding incomes.
+void CPlayer::GetIncome() {
+	//The number of cities that could be powered this turn won't be greater than the cities a player owns
+	int powerNumber = (m_iNumberOfCitiesPoweredThisTurn > m_vHouse.size() ? m_vHouse.size() : m_iNumberOfCitiesPoweredThisTurn);
+	int income;
+	switch (powerNumber) {
+	case 0:
+		income = 10;
+		break;
+	case 1:
+		income = 22;
+		break;
+	case 2:
+		income = 33;
+		break;
+	case 3:
+		income = 44;
+		break;
+	case 4:
+		income = 54;
+		break;
+	case 5:
+		income = 64;
+		break;
+	case 6:
+		income = 73;
+		break;
+	case 7:
+		income = 82;
+		break;
+	case 8:
+		income = 90;
+		break;
+	case 9:
+		income = 98;
+		break;
+	case 10:
+		income = 105;
+		break;
+	case 11:
+		income = 112;
+		break;
+	case 12:
+		income = 118;
+		break;
+	case 13:
+		income = 124;
+		break;
+	case 14:
+		income = 129;
+		break;
+	case 15:
+		income = 134;
+		break;
+	case 16:
+		income = 138;
+		break;
+	case 17:
+		income = 142;
+		break;
+	case 18:
+		income = 145;
+		break;
+	case 19:
+		income = 148;
+		break;
+	case 20:
+		income = 150;
+		break;
+	}
+	m_iMoney += income;
+	m_iNumberOfCitiesPoweredThisTurn = 0;
+}
+
+
+void CPlayer::BuildHouseOn(CCity city) {
+	//Code for computing the required money to buy a city
+	CHouse house(city);
+	m_vHouse.push_back(house);
 }

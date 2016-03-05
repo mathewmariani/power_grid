@@ -3,6 +3,8 @@
 #include "CResourceMarket.h"
 #include "CCard.h"
 #include "CDeck.h"
+#include "CHouse.h"
+#include "CCity.h"
 #include "base.h"
 
 enum BuyResult_e {
@@ -18,6 +20,7 @@ enum GenerateResult_e {
 class CPlayer {
 public:
 	CPlayer(std::string name);
+	CPlayer(std::string name, int money, int coal, int oil, int garbage, int uranium, std::vector<CCard> card);
 	~CPlayer();
 
 	std::string GetName();
@@ -26,6 +29,7 @@ public:
 	int GetOil();
 	int GetGarbage();
 	int GetUranium();
+	std::vector<CCard> GetCard();
 
 	const std::string GetName() const;
 	const int GetMoney() const;
@@ -33,6 +37,8 @@ public:
 	const int GetOil() const;
 	const int GetGarbage() const;
 	const int GetUranium() const;
+	const std::vector<CCard> GetCard() const;
+
 
 	// override << Operator
 	void Print() {
@@ -55,6 +61,9 @@ public:
 
 	GenerateResult_e GenerateEletricity(int cardNum);
 
+	void BuildHouseOn(CCity city);
+	void GetIncome();
+
 private:
 	std::string m_sName;
 
@@ -67,8 +76,10 @@ private:
 	int m_iUranium;
 
 	//Plant cards
-	CCard m_iCard[3];
-	int m_iNumberOfPlantCards;
+	std::vector<CCard> m_vCard;
+
+	//Houses
+	std::vector<CHouse> m_vHouse;
 
 	int m_iNumberOfCitiesPoweredThisTurn;
 };
