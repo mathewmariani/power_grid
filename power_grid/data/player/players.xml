@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<playerList>
+	<player name="junan" money="23" coal="1" oil="1" garbage="1" uranium="1">
+		<card number="3" cost="2" payment="0" powers="1" />
+	</player>
+	<player name="fred" money="48" coal="0" oil="0" garbage="0" uranium="0">
+		<card number="4" cost="2" payment="0" powers="1" />
+	</player>
+</playerList>

@@ -25,6 +25,9 @@
     <Filter Include="Source Files\game">
       <UniqueIdentifier>{fe6ca0e2-da88-40b9-b422-18a03ddef3a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\data">
+      <UniqueIdentifier>{e483a3ab-130d-44e9-b86a-e69c21c4fd94}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,6 +54,12 @@
     <ClCompile Include="CGame.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
+    <ClCompile Include="CHouse.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="CCity.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -72,6 +81,12 @@
       <Filter>Header Files\game</Filter>
     </ClInclude>
     <ClInclude Include="CGame.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CHouse.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CCity.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
   </ItemGroup>

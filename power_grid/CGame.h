@@ -17,6 +17,10 @@ public:
 	int CurrentPhase();
 	const int CurrentPhase() const;
 
+	void SavePlayers();
+	void LoadPlayers();
+	void LoadPlayers(std::string name);
+
 private:
 	void InitializePlayers();
 	void InitializeBoard();
