@@ -10,7 +10,8 @@ CPlayer::CPlayer(std::string name) :
 	m_iUranium(0),
 	m_vCard(),	// not needed here
 	m_vHouse(),	// not needed here
-	m_iNumberOfCitiesPoweredThisTurn(0) {	// not needed here can be calculated
+	m_iNumberOfCitiesPoweredThisTurn(0),	// not needed here
+	m_iMaxCardNum(0) {	// not needed here can be calculated
 
 }
 
@@ -22,7 +23,8 @@ CPlayer::CPlayer(std::string name, int money, int coal, int oil, int garbage, in
 	m_iUranium(uranium),
 	m_vCard(card),	// not needed here
 	m_vHouse(),	// not needed here
-	m_iNumberOfCitiesPoweredThisTurn(0) {	// not needed here can be calculated
+	m_iNumberOfCitiesPoweredThisTurn(0),	// not needed here
+	m_iMaxCardNum(0) {	// not needed here can be calculated
 
 }
 
@@ -55,8 +57,16 @@ int CPlayer::GetUranium() {
 	return m_iUranium;
 }
 
+int CPlayer::GetMaxCardNum() {
+	return m_iMaxCardNum;
+}
+
 std::vector<CCard> CPlayer::GetCard() {
 	return m_vCard;
+}
+
+std::vector<CHouse> CPlayer::GetHouse() {
+	return m_vHouse;
 }
 
 const std::string CPlayer::GetName() const {
@@ -83,8 +93,16 @@ const int CPlayer::GetUranium() const {
 	return m_iUranium;
 }
 
+const int CPlayer::GetMaxCardNum() const {
+	return m_iMaxCardNum;
+}
+
 const std::vector<CCard> CPlayer::GetCard() const {
 	return m_vCard;
+}
+
+const std::vector<CHouse> CPlayer::GetHouse() const {
+	return m_vHouse;
 }
 
 BuyResult_e CPlayer::AttemptToBuyCoal() {
@@ -192,6 +210,9 @@ BuyResult_e CPlayer::AttemptToBuyCard(CDeck* deck, int cardNumber) {
 	else {
 		m_vCard.push_back(card);
 		m_iMoney -= cardPrice;
+		//update the maximal card number
+		if (card.GetNumber() > m_iMaxCardNum)
+			m_iMaxCardNum = card.GetNumber();
 
 		std::cout << "#Bought_Plant_Card_Number" << cardNumber << "\n";
 		return BUY_BOUGHT;

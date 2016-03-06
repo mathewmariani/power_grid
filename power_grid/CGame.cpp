@@ -13,11 +13,12 @@ void CGame::Initialize() {
 	std::cout << "How many players will be playing? ";
 	std::cin >> m_iNumberOfPlayers;
 
-
+	//Phase 1: initialization part
 	InitializePlayers();
 	InitializeBoard();
 	InitializeDeck();
 
+	// Testing part
 	// Print Everything we (the driver) has
 	PrintResourceMarket();
 
@@ -35,8 +36,19 @@ void CGame::Initialize() {
 
 	// Test the deck
 	CDeck deck;
-	m_vPlayers[0].AttemptToBuyCard(&deck, 3);
-	m_vPlayers[1].AttemptToBuyCard(&deck, 4);
+
+	m_vPlayers[0].AttemptToBuyPlantCard(&deck, 3);
+	m_vPlayers[1].AttemptToBuyPlantCard(&deck, 4);
+	// End of testing part
+
+
+	while (true /* by the time the number of a player's house reaches 17, game is over*/) {
+		
+		//phase 2: Bidding plant cards
+		//phase 3: Purchasing resources
+		//phase 4: Builing houses
+		//phase 5: Power the plants and gain income
+	}
 }
 
 int CGame::NumberOfPlayers() {
@@ -58,11 +70,14 @@ const GameState_e CGame::CurrentState() const {
 void CGame::InitializePlayers() {
 	for (int i = 0; i < m_iNumberOfPlayers; i++) {
 		std::string temp;
-		std::cout << "What is player " << (i+1) << "'s name? ";
+		std::cout << "What is player " << (i + 1) << "'s name? ";
 		std::cin >> temp;
 
 		m_vPlayers.push_back(CPlayer(temp));
 	}
+
+	//randomize the order in the beginning
+	std::random_shuffle(m_vPlayers.begin(), m_vPlayers.end());
 }
 
 void CGame::InitializeBoard() {
@@ -141,7 +156,7 @@ void CGame::LoadPlayers(std::string name) {
 
 	for (pugi::xml_node player = player_node.first_child(); player; player = player.next_sibling()) {
 		if (std::strcmp(XMLParseString(player.attribute("name")).c_str(), name.c_str()) == 0) {
-			
+
 			//parsing cards
 			std::vector<CCard> tempCard;
 			for (pugi::xml_node card = player.first_child(); card; card = card.next_sibling()) {
@@ -167,3 +182,21 @@ void CGame::LoadPlayers(std::string name) {
 	}
 
 }
+
+bool CGame::CompareFunction(const CPlayer &p1, const CPlayer &p2) {
+	if (p1.GetHouse().size() > p2.GetHouse().size())
+		return true;
+	else if (p1.GetHouse().size() == p1.GetHouse().size()) {
+		if (p1.GetMaxCardNum() > p2.GetMaxCardNum())
+			return true;
+	}
+	else
+		return false;
+}
+
+void CGame::SortOrder() {
+
+	sort(m_vPlayers.begin(), m_vPlayers.end(), CompareFunction);
+}
+
+

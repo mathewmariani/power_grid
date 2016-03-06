@@ -33,7 +33,9 @@ public:
 	int GetOil();
 	int GetGarbage();
 	int GetUranium();
+	int GetMaxCardNum();
 	std::vector<CCard> GetCard();
+	std::vector<CHouse> GetHouse();
 
 	const std::string GetName() const;
 	const int GetMoney() const;
@@ -41,8 +43,9 @@ public:
 	const int GetOil() const;
 	const int GetGarbage() const;
 	const int GetUranium() const;
+	const int GetMaxCardNum() const;
 	const std::vector<CCard> GetCard() const;
-
+	const std::vector<CHouse> GetHouse() const;
 
 	// MAT: This should eventually override << operator
 	void Print() {
@@ -80,9 +83,10 @@ private:
 
 	//Plant cards
 	std::vector<CCard> m_vCard;
+	int m_iMaxCardNum;
 
 	//Houses
 	std::vector<CHouse> m_vHouse;
-
+	
 	int m_iNumberOfCitiesPoweredThisTurn;
 };
