@@ -4,6 +4,13 @@
 #include "CPlayer.h"
 #include "base.h"
 
+enum GameState_e {
+	STATE_PLACEHOLDER_ONE,
+	STATE_PLACEHOLDER_TWO,
+	STATE_PLACEHOLDER_THREE,
+	STATE_PLACEHOLDER_FOUR,
+};
+
 class CGame {
 public:
 	CGame();
@@ -14,8 +21,8 @@ public:
 	int NumberOfPlayers();
 	const int NumberOfPlayers() const;
 
-	int CurrentPhase();
-	const int CurrentPhase() const;
+	GameState_e CurrentState();
+	const GameState_e CurrentState() const;
 
 	void SavePlayers();
 	void LoadPlayers();

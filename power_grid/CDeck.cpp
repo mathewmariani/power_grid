@@ -15,6 +15,8 @@ CDeck::CDeck() :
 			));
 	}
 
+	// DO NOT TOUCH THIS.
+	// MAT: this is shitty random, still needs to be fixed.
 	std::random_shuffle(m_vDeck.begin(), m_vDeck.end());
 }
 
@@ -34,11 +36,15 @@ CCard CDeck::Draw() {
 	return temp;
 }
 
+// MAT: Okay so you get the card... but it remains in the deck.
+// and can later be drawn again
 CCard CDeck::FindCard(int number) {
 	int len = m_vDeck.size();
-	for (int i = 0; i < len; i++)
-		if (m_vDeck[i].GetNumber() == number)
+	for (int i = 0; i < len; i++) {
+		if (m_vDeck[i].GetNumber() == number) {
 			return m_vDeck[i];
+		}
+	}
 
 	std::cout << "!!! ERROR: Card not found.";
 	CCard card;
