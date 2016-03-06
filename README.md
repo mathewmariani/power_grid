@@ -26,12 +26,12 @@ Using this convention we can easily see that the variable we are sending to Foo(
 
 ```cpp
 // with naming convention
-void MyClass::Foo(void) {
+void CMyClass::Foo(void) {
 	Foo(m_iSomeValue)
 }
 
 // without naming convention
-void CMyClass::Foo(void) {
+void MyClass::Foo(void) {
 	Foo(someValue)
 	Foo(this->someValue)
 }
