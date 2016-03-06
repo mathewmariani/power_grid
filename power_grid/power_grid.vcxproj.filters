@@ -28,6 +28,9 @@
     <Filter Include="Resource Files\data">
       <UniqueIdentifier>{e483a3ab-130d-44e9-b86a-e69c21c4fd94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\interface">
+      <UniqueIdentifier>{9b73bd73-9398-476c-9b44-a1058393ad48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -97,6 +100,15 @@
     </ClInclude>
     <ClInclude Include="CMap.h">
       <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="IObservable.h">
+      <Filter>Header Files\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ISerializable.h">
+      <Filter>Header Files\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ISubject.h">
+      <Filter>Header Files\interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

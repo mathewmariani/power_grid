@@ -37,8 +37,8 @@ void CGame::Initialize() {
 	// Test the deck
 	CDeck deck;
 
-	m_vPlayers[0].AttemptToBuyPlantCard(&deck, 3);
-	m_vPlayers[1].AttemptToBuyPlantCard(&deck, 4);
+	m_vPlayers[0].AttemptToBuyCard(&deck, 3);
+	m_vPlayers[1].AttemptToBuyCard(&deck, 4);
 	// End of testing part
 
 
@@ -184,19 +184,22 @@ void CGame::LoadPlayers(std::string name) {
 }
 
 bool CGame::CompareFunction(const CPlayer &p1, const CPlayer &p2) {
-	if (p1.GetHouse().size() > p2.GetHouse().size())
+	if (p1.GetHouse().size() > p2.GetHouse().size()) {
 		return true;
-	else if (p1.GetHouse().size() == p1.GetHouse().size()) {
-		if (p1.GetMaxCardNum() > p2.GetMaxCardNum())
+	} else if (p1.GetHouse().size() == p1.GetHouse().size()) {
+		if (p1.GetMaxCardNum() > p2.GetMaxCardNum()) {
 			return true;
+		}
 	}
-	else
-		return false;
+
+	return false;
 }
 
 void CGame::SortOrder() {
-
-	sort(m_vPlayers.begin(), m_vPlayers.end(), CompareFunction);
+	// error C3867 : 'CGame::CompareFunction' : non - standard syntax; use '&' to create a pointer to member
+	// error C2672 : 'sort' : no matching overloaded function found
+	// error C2780 : 'void std::sort(_RanIt,_RanIt)' : expects 2 arguments - 3 provided
+	//sort(m_vPlayers.begin(), m_vPlayers.end(), CompareFunction);
 }
 
 

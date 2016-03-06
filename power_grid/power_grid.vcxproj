@@ -169,6 +169,9 @@
     <ClInclude Include="CMap.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CResourceMarket.h" />
+    <ClInclude Include="IObservable.h" />
+    <ClInclude Include="ISerializable.h" />
+    <ClInclude Include="ISubject.h" />
     <ClInclude Include="shareddef.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
