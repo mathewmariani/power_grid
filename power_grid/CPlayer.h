@@ -7,11 +7,15 @@
 #include "CCity.h"
 #include "base.h"
 
+// MAT: These aren't actually needed,
+// But leave them in just incase
 enum BuyResult_e {
 	BUY_BOUGHT,
 	BUY_CANT_AFFORD,
 };
 
+// MAT: These aren't actually needed,
+// But leave them in just incase
 enum GenerateResult_e {
 	GENERATE_NOT_ENOUGH_RESOURCE,
 	GENERATE_SUCCEED,
@@ -40,7 +44,7 @@ public:
 	const std::vector<CCard> GetCard() const;
 
 
-	// override << Operator
+	// MAT: This should eventually override << operator
 	void Print() {
 		std::cout << "Player Info===================" << "\n";
 		std::cout << "NAME:\t\t" << m_sName << "\n\n";
@@ -56,8 +60,7 @@ public:
 	BuyResult_e AttemptToBuyOil();
 	BuyResult_e AttemptToBuyGarbage();
 	BuyResult_e AttemptToBuyUranium();
-
-	BuyResult_e AttemptToBuyPlantCard(CDeck* deck, int cardNumber);
+	BuyResult_e AttemptToBuyCard(CDeck* deck, int cardNumber);
 
 	GenerateResult_e GenerateEletricity(int cardNum);
 

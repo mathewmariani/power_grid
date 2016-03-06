@@ -5,9 +5,9 @@
 
 class CHouse {
 public:
-	CHouse();
 	CHouse(CCity city);
 	~CHouse();
+
 private:
 	CCity m_City;
 };

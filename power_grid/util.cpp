@@ -19,3 +19,7 @@ int XMLParseInt(const pugi::xml_attribute &node) {
 std::string XMLParseString(const pugi::xml_attribute &node) {
 	return node.as_string();
 }
+
+pugi::xml_node XMLAppendChild(pugi::xml_node &node, std::string name) {
+	return node.append_child(name.c_str());
+}

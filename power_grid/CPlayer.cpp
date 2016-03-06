@@ -8,9 +8,9 @@ CPlayer::CPlayer(std::string name) :
 	m_iOil(0),
 	m_iGarbage(0),
 	m_iUranium(0),
-	m_vCard(),
-	m_vHouse(),
-	m_iNumberOfCitiesPoweredThisTurn(0) {
+	m_vCard(),	// not needed here
+	m_vHouse(),	// not needed here
+	m_iNumberOfCitiesPoweredThisTurn(0) {	// not needed here can be calculated
 
 }
 
@@ -20,9 +20,9 @@ CPlayer::CPlayer(std::string name, int money, int coal, int oil, int garbage, in
 	m_iOil(oil),
 	m_iGarbage(garbage),
 	m_iUranium(uranium),
-	m_vCard(card),
-	m_vHouse(),
-	m_iNumberOfCitiesPoweredThisTurn(0) {
+	m_vCard(card),	// not needed here
+	m_vHouse(),	// not needed here
+	m_iNumberOfCitiesPoweredThisTurn(0) {	// not needed here can be calculated
 
 }
 
@@ -175,7 +175,7 @@ BuyResult_e CPlayer::AttemptToBuyUranium() {
 	}
 }
 
-BuyResult_e CPlayer::AttemptToBuyPlantCard(CDeck* deck, int cardNumber) {
+BuyResult_e CPlayer::AttemptToBuyCard(CDeck* deck, int cardNumber) {
 	CCard card = deck->FindCard(cardNumber);
 	int cardPrice = card.GetCost();
 
@@ -262,13 +262,19 @@ GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;
 		}
-	}
 
+		// MAT: You always need a default
+		// otherwise you get: warning C4715: not all control paths return a value
+	default:
+		return GENERATE_NOT_ENOUGH_RESOURCE;
+	}
 }
 
 //According to the cities powered this turn, players get the corresponding incomes.
+// MAT: Can this be calculated in anyway? I don't like giant switch statments.
 void CPlayer::GetIncome() {
 	//The number of cities that could be powered this turn won't be greater than the cities a player owns
+	// warning C4267 : 'initializing' : conversion from 'size_t' to 'int', possible loss of data
 	int powerNumber = (m_iNumberOfCitiesPoweredThisTurn > m_vHouse.size() ? m_vHouse.size() : m_iNumberOfCitiesPoweredThisTurn);
 	int income;
 	switch (powerNumber) {

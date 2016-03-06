@@ -60,6 +60,9 @@
     <ClCompile Include="CCity.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
+    <ClCompile Include="CMap.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -89,9 +92,21 @@
     <ClInclude Include="CCity.h">
       <Filter>Header Files\game</Filter>
     </ClInclude>
+    <ClInclude Include="base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CMap.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="deck.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="map.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="doctored_map.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

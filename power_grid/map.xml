@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map>
+  <city name="Prince Rupert" region="Western Canada">
+    <neighbours name='Whitehorse' cost='20' />
+    <neighbours name='Victoria' cost='22' />
+    <neighbours name='Prince George' cost='17' />
+  </city>
+  <city name="Prince George" region="Western Canada">
+    <neighbours name='Vancouver' cost='17' />
+    <neighbours name='Banff' cost='16' />
+    <neighbours name='Edmonton' cost='20' />
+    <neighbours name='Prince Rupert' cost='17' />
+  </city>
+  <city name="Victoria" region="Western Canada">
+    <neighbours name='Prince Rupert' cost='22' />
+    <neighbours name='Vancouver' cost='7' />
+  </city>
+  <city name="Vancouver" region="Western Canada">
+    <neighbours name='Banff' cost='14' />
+    <neighbours name='Victoria' cost='7' />
+    <neighbours name='Prince George' cost='17' />
+  </city>
+  <city name="Banff" region="Western Canada">
+    <neighbours name='Edmonton' cost='13' />
+    <neighbours name='Prince George' cost='16' />
+    <neighbours name='Calgary' cost='10' />
+    <neighbours name='Vancouver' cost='14' />
+  </city>
+  <city name="Edmonton" region="Western Canada">
+    <neighbours name='Saskatoon' cost='12' />
+    <neighbours name='Banff' cost='13' />
+    <neighbours name='Calgary' cost='5' />
+    <neighbours name='Prince George' cost='20' />
+    <neighbours name='Yellowknife' cost='25' />
+  </city>
+  <city name="Calgary" region="Western Canada">
+    <neighbours name='Edmonton' cost='5' />
+    <neighbours name='Lethbridge' cost='5' />
+    <neighbours name='Saskatoon' cost='9' />
+    <neighbours name='Banff' cost='10' />
+  </city>
+  <city name="Lethbridge" region="">
+    <neighbours name='Saskatoon' cost='8' />
+    <neighbours name='Regina' cost='7' />
+    <neighbours name='Vancouver' cost='21' />
+    <neighbours name='Calgary' cost='5' />
+  </city>
+  <city name="Saskatoon" region="Central Canada">
+    <neighbours name='Churchill' cost='24' />
+    <neighbours name='Regina' cost='5' />
+    <neighbours name='Yorkton' cost='6' />
+    <neighbours name='Lethbridge' cost='8' />
+    <neighbours name='Calgary' cost='9' />
+    <neighbours name='Edmonton' cost='12' />
+  </city>
+  <city name="Yorkton" region="Central Canada">
+    <neighbours name='Winnipeg' cost='8' />
+    <neighbours name='Brandon' cost='5' />
+    <neighbours name='Regina' cost='4' />
+    <neighbours name='Saskatoon' cost='6' />
+  </city>
+  <city name="Brandon" region="Central Canada">
+    <neighbours name='Kenora' cost='8' />
+    <neighbours name='Regina' cost='7' />
+  </city>
+  <city name="Winnipeg" region="Central Canada">
+    <neighbours name='Churchill' cost='22' />
+    <neighbours name='Yorkton' cost='8' />
+    <neighbours name='Brandon' cost='4' />
+    <neighbours name='Kenora' cost='6' />
+    <neighbours name='Thunder Bay' cost='11' />
+  </city>
+  <city name="Kenora" region="Central Canada">
+    <neighbours name='Sault Ste Marie' cost='19' />
+    <neighbours name='Brandon' cost='8' />
+    <neighbours name='Thunder Bay' cost='11' />
+    <neighbours name='Winnipeg' cost='6' />
+  </city>
+  <city name="Whitehorse" region="Northern Canada">
+    <neighbours name='Dawson' cost='15' />
+    <neighbours name='Prince Rupert' cost='20' />
+    <neighbours name='Yellowknife' cost='22' />
+  </city>
+  <city name="Dawson" region="Northern Canada">
+    <neighbours name='Whitehorse' cost='15' />
+    <neighbours name='Inuvik' cost='17' />
+    <neighbours name='Yellowknife' cost='19' />
+  </city>
+  <city name="Inuvik" region="Northern Canada">
+    <neighbours name='Iqaluit' cost='32' />
+    <neighbours name='Dawson' cost='17' />
+    <neighbours name='Yellowknife' cost='21' />
+  </city>
+  <city name="Yellowknife" region="Northern Canada">
+    <neighbours name='Iqaluit' cost='31' />
+    <neighbours name='Churchill' cost='26' />
+    <neighbours name='Edmonton' cost='25' />
+    <neighbours name='Whitehorse' cost='22' />
+    <neighbours name='Dawson' cost='19' />
+    <neighbours name='Inuvik' cost='21' />
+  </city>
+  <city name="Churchill" region="Northern Canada">
+    <neighbours name='Iqaluit' cost='30' />
+    <neighbours name='Winnipeg' cost='22' />
+    <neighbours name='Inukjuak' cost='27' />
+    <neighbours name='Moonsonee' cost='25' />
+    <neighbours name='Saskatoon' cost='24' />
+    <neighbours name='Yellowknife' cost='26' />
+  </city>
+  <city name="Iqaluit" region="Northern Canada">
+    <neighbours name='Inuvik' cost='32' />
+    <neighbours name='Churchill' cost='30' />
+    <neighbours name='Labrador City' cost='29' />
+    <neighbours name='Yellowknife' cost='31' />
+    <neighbours name='Inukjuak' cost='21' />
+  </city>
+  <city name="Narshe" region="Unknown Regions">
+    <neighbours name='Kohlingen' cost='13' />
+    <neighbours name='Figaro' cost='12' />
+  </city>
+</map>

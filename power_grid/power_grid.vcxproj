@@ -152,6 +152,7 @@
     <ClCompile Include="CDeck.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CHouse.cpp" />
+    <ClCompile Include="CMap.cpp" />
     <ClCompile Include="CPlayer.cpp" />
     <ClCompile Include="CResourceMarket.cpp" />
     <ClCompile Include="include\pugixml.cpp" />
@@ -159,11 +160,13 @@
     <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="base.h" />
     <ClInclude Include="CCard.h" />
     <ClInclude Include="CCity.h" />
     <ClInclude Include="CDeck.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CHouse.h" />
+    <ClInclude Include="CMap.h" />
     <ClInclude Include="CPlayer.h" />
     <ClInclude Include="CResourceMarket.h" />
     <ClInclude Include="shareddef.h" />
@@ -171,6 +174,8 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="deck.xml" />
+    <Xml Include="doctored_map.xml" />
+    <Xml Include="map.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

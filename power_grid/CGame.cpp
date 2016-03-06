@@ -8,6 +8,7 @@ CGame::~CGame() {
 
 }
 
+// MAT: Everything here is just for testing
 void CGame::Initialize() {
 	std::cout << "How many players will be playing? ";
 	std::cin >> m_iNumberOfPlayers;
@@ -34,8 +35,8 @@ void CGame::Initialize() {
 
 	// Test the deck
 	CDeck deck;
-	m_vPlayers[0].AttemptToBuyPlantCard(&deck, 3);
-	m_vPlayers[1].AttemptToBuyPlantCard(&deck, 4);
+	m_vPlayers[0].AttemptToBuyCard(&deck, 3);
+	m_vPlayers[1].AttemptToBuyCard(&deck, 4);
 }
 
 int CGame::NumberOfPlayers() {
@@ -46,12 +47,12 @@ const int CGame::NumberOfPlayers() const {
 	return m_iNumberOfPlayers;
 }
 
-int CGame::CurrentPhase() {
-	return 0;
+GameState_e CGame::CurrentState() {
+	return STATE_PLACEHOLDER_ONE;
 }
 
-const int CGame::CurrentPhase() const {
-	return 0;
+const GameState_e CGame::CurrentState() const {
+	return STATE_PLACEHOLDER_ONE;
 }
 
 void CGame::InitializePlayers() {
@@ -80,34 +81,22 @@ void CGame::SavePlayers() {
 
 	auto root = doc.append_child("playerList");
 
+	// MAT: Added new utility functions for cleaning up XML parsing
 	for (int i = 0; i < NumberOfPlayers(); i++) {
-		std::string name = m_vPlayers[i].GetName();
-		int money = m_vPlayers[i].GetMoney();
-		int coal = m_vPlayers[i].GetCoal();
-		int oil = m_vPlayers[i].GetOil();
-		int garbage = m_vPlayers[i].GetGarbage();
-		int uranium = m_vPlayers[i].GetUranium();
-		std::vector<CCard> card = m_vPlayers[i].GetCard();
+		auto tempPlayer = XMLAppendChild(root, "player");
+		XMLAppendAttribute(tempPlayer, "name", m_vPlayers[i].GetName());
+		XMLAppendAttribute(tempPlayer, "money", m_vPlayers[i].GetMoney());
+		XMLAppendAttribute(tempPlayer, "coal", m_vPlayers[i].GetCoal());
+		XMLAppendAttribute(tempPlayer, "oil", m_vPlayers[i].GetOil());
+		XMLAppendAttribute(tempPlayer, "garbage", m_vPlayers[i].GetGarbage());
+		XMLAppendAttribute(tempPlayer, "uranium", m_vPlayers[i].GetUranium());
 
-		auto tempPlayer = root.append_child("player");
-		tempPlayer.append_attribute("name") = name.c_str();
-		tempPlayer.append_attribute("money") = money;
-		tempPlayer.append_attribute("coal") = coal;
-		tempPlayer.append_attribute("oil") = oil;
-		tempPlayer.append_attribute("garbage") = garbage;
-		tempPlayer.append_attribute("uranium") = uranium;
-
-		for (int j = 0; j < card.size(); j++) {
-			int number = m_vPlayers[i].GetCard()[j].GetNumber();
-			int cost = m_vPlayers[i].GetCard()[j].GetCost();
-			int payment = m_vPlayers[i].GetCard()[j].GetResources();
-			int powers = m_vPlayers[i].GetCard()[j].GetCitiesPowered();
-
-			auto tempCard = tempPlayer.append_child("card");
-			tempCard.append_attribute("number") = number;
-			tempCard.append_attribute("cost") = cost;
-			tempCard.append_attribute("payment") = payment;
-			tempCard.append_attribute("powers") = powers;
+		for (int j = 0; j < m_vPlayers[i].GetCard().size(); j++) {
+			auto tempCard = XMLAppendChild(tempPlayer, "card");
+			XMLAppendAttribute(tempCard, "number", m_vPlayers[i].GetCard()[j].GetNumber());
+			XMLAppendAttribute(tempCard, "cost", m_vPlayers[i].GetCard()[j].GetCost());
+			XMLAppendAttribute(tempCard, "payment", m_vPlayers[i].GetCard()[j].GetResources());
+			XMLAppendAttribute(tempCard, "powers", m_vPlayers[i].GetCard()[j].GetCitiesPowered());
 		}
 	}
 
