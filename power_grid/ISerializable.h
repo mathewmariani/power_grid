@@ -1,6 +1,8 @@
 #pragma once
 
+#include <pugixml.hpp>
+
 class ISerializable {
 public:
-	virtual void Serialize() = 0;
+	virtual void Serialize(pugi::xml_node &parent) = 0;
 };

@@ -118,8 +118,5 @@
     <Xml Include="map.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="doctored_map.xml">
-      <Filter>Resource Files</Filter>
-    </Xml>
   </ItemGroup>
 </Project>

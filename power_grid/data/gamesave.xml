@@ -1,4 +1,8 @@
 <?xml version="1.0"?>
 <game>
-	<playerList />
+	<resources coal="24" oil="18" garbage="6" uranium="2" />
+	<players>
+		<player name="Matty" money="50" coal="0" oil="0" garbage="0" uranium="0" />
+		<player name="Junan" money="50" coal="0" oil="0" garbage="0" uranium="0" />
+	</players>
 </game>

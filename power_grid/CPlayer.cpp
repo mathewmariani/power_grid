@@ -374,22 +374,12 @@ void CPlayer::BuildHouseOn(CCity city) {
 	m_vHouse.push_back(house);
 }
 
-pugi::xml_node CPlayer::Serialize() {
-
-	pugi::xml_node temp;
-	temp.set_name("player");
-
-	XMLAppendAttribute(temp, "name",  GetName());
-	XMLAppendAttribute(temp, "coal", GetCoal());
-	XMLAppendAttribute(temp, "oil", GetOil());
-	XMLAppendAttribute(temp, "garbage", GetGarbage());
-	XMLAppendAttribute(temp, "uranium", GetUranium());
-
-	for (int i = 0; i < GetCard().size(); i++) {
-		auto tempCard = XMLAppendChild(temp, "card");
-		XMLAppendAttribute(tempCard, "number", GetCard()[i].GetNumber());
-	}
-
-	std::cout << temp.name() << ", " << temp.attribute("name").as_string() << ", " << temp.attribute("coal").as_int() << "\n";
-	return temp;
+void CPlayer::Serialize(pugi::xml_node &parent) {
+	auto player = XMLAppendChild(parent, "player");
+	XMLAppendAttribute(player, "name", GetName());
+	XMLAppendAttribute(player, "money", GetMoney());
+	XMLAppendAttribute(player, "coal", GetCoal());
+	XMLAppendAttribute(player, "oil", GetOil());
+	XMLAppendAttribute(player, "garbage", GetGarbage());
+	XMLAppendAttribute(player, "uranium", GetUranium());
 }

@@ -1,10 +1,13 @@
 #pragma once
 
+#include "ISerializable.h"
+
 #include "CResourceMarket.h"
 #include "CCard.h"
 #include "CDeck.h"
 #include "CHouse.h"
 #include "CCity.h"
+
 #include "base.h"
 
 // MAT: These aren't actually needed,
@@ -21,7 +24,7 @@ enum GenerateResult_e {
 	GENERATE_SUCCEED,
 };
 
-class CPlayer {
+class CPlayer : ISerializable {
 public:
 	CPlayer(std::string name);
 	CPlayer(std::string name, int money, int coal, int oil, int garbage, int uranium, std::vector<CCard> card);
@@ -70,7 +73,7 @@ public:
 	void BuildHouseOn(CCity city);
 	void GetIncome();
 
-	pugi::xml_node Serialize();
+	void Serialize(pugi::xml_node &parent);
 
 private:
 	std::string m_sName;

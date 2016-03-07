@@ -18,40 +18,10 @@ void CGame::Initialize() {
 	InitializeBoard();
 	InitializeDeck();
 
-	// Testing part
-	// Print Everything we (the driver) has
-	PrintResourceMarket();
-
-	// buy some stuff
-	m_vPlayers[0].AttemptToBuyCoal();
-	m_vPlayers[0].AttemptToBuyOil();
-	m_vPlayers[0].AttemptToBuyGarbage();
-	m_vPlayers[0].AttemptToBuyUranium();
-
-	// look at all out loot
-	m_vPlayers[0].Print();
-
-	// take a look at the market
-	PrintResourceMarket();
-
-	// Test the deck
-	CDeck deck;
-
-	m_vPlayers[0].AttemptToBuyCard(&deck, 3);
-	m_vPlayers[1].AttemptToBuyCard(&deck, 4);
-	// End of testing part
-
-	SortOrder();
-	for (int i = 0; i < m_vPlayers.size(); i++)
-		std::cout << i + 1 << ". " << m_vPlayers[i].GetName() << "\n";
-
-	while (false/* by the time the number of a player's house reaches 17, game is over*/) {
-		
-		//phase 2: Bidding plant cards
-		//phase 3: Purchasing resources
-		//phase 4: Builing houses
-		//phase 5: Power the plants and gain income
-	}
+	//SortOrder();
+	//for (int i = 0; i < m_vPlayers.size(); i++) {
+	//	std::cout << i + 1 << ". " << m_vPlayers[i].GetName() << "\n";
+	//}
 }
 
 int CGame::NumberOfPlayers() {
@@ -92,18 +62,26 @@ void CGame::InitializeDeck() {
 }
 
 void CGame::Save() {
+	
+	// create save game document
 	pugi::xml_document doc;
-
 	auto declarationNode = doc.append_child(pugi::node_declaration);
 	declarationNode.append_attribute("version") = "1.0";
 
-	auto gameRoot = doc.append_child("game");
+	// create game root
+	auto root = XMLAppendChild(doc, "game");
 
-	// save players
-	auto playerRoot = gameRoot.append_child("playerList");
+	// serialize the resource market
+	auto resources = XMLAppendChild(root, "resources");
+	XMLAppendAttribute(resources, "coal", g_iCoalCount);
+	XMLAppendAttribute(resources, "oil", g_iOilCount);
+	XMLAppendAttribute(resources, "garbage", g_iGarbageCount);
+	XMLAppendAttribute(resources, "uranium", g_iUraniumCount);
 
+	// serialize players
+	auto players = XMLAppendChild(root, "players");
 	for (int i = 0; i < NumberOfPlayers(); i++) {
-		playerRoot.append_copy(m_vPlayers[i].Serialize());	
+		m_vPlayers[i].Serialize(players);
 	}
 
 	doc.save_file("data/gamesave.xml");

@@ -177,7 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="deck.xml" />
-    <Xml Include="doctored_map.xml" />
     <Xml Include="map.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

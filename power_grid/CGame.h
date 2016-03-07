@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ISerializable.h"
 #include "CDeck.h"
 #include "CPlayer.h"
 #include "base.h"
@@ -29,7 +30,6 @@ public:
 	void LoadPlayers(std::string name);
 
 	void SortOrder();
-	
 
 private:
 	void InitializePlayers();

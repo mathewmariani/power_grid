@@ -20,6 +20,16 @@ std::string XMLParseString(const pugi::xml_attribute &node) {
 	return node.as_string();
 }
 
-pugi::xml_node XMLAppendChild(pugi::xml_node &node, std::string name) {
-	return node.append_child(name.c_str());
+pugi::xml_node XMLAppendChild(pugi::xml_document &doc, std::string name) {
+	pugi::xml_node root = doc.append_child();
+	root.set_name(name.c_str());
+
+	return root;
+}
+
+pugi::xml_node XMLAppendChild(pugi::xml_node &parent, std::string name) {
+	pugi::xml_node child = parent.append_child();
+	child.set_name(name.c_str());
+
+	return child;
 }
