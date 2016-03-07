@@ -1,5 +1,6 @@
 #include "CPlayer.h"
 #include "shareddef.h"
+#include <iostream>
 
 CPlayer::CPlayer(std::string name) :
 	m_sName(name),
@@ -8,10 +9,8 @@ CPlayer::CPlayer(std::string name) :
 	m_iOil(0),
 	m_iGarbage(0),
 	m_iUranium(0),
-	m_vCard(),	// not needed here
-	m_vHouse(),	// not needed here
-	m_iNumberOfCitiesPoweredThisTurn(0),	// not needed here
-	m_iMaxCardNum(0) {	// not needed here can be calculated
+	m_iNumberOfCitiesPoweredThisTurn(0),	// not needed here    Junan: it must be initialized to 0
+	m_iMaxCardNum(0) {	// not needed here can be calculated      Junan: it must be initialized to 0
 
 }
 
@@ -293,10 +292,11 @@ GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
 
 //According to the cities powered this turn, players get the corresponding incomes.
 // MAT: Can this be calculated in anyway? I don't like giant switch statments.
+// Junan: I don't like this way either but it seems calculation way is also lengthy
 void CPlayer::GetIncome() {
 	//The number of cities that could be powered this turn won't be greater than the cities a player owns
 	// warning C4267 : 'initializing' : conversion from 'size_t' to 'int', possible loss of data
-	int powerNumber = (m_iNumberOfCitiesPoweredThisTurn > m_vHouse.size() ? m_vHouse.size() : m_iNumberOfCitiesPoweredThisTurn);
+	int powerNumber = (m_iNumberOfCitiesPoweredThisTurn > (int)m_vHouse.size() ? (int)m_vHouse.size() : m_iNumberOfCitiesPoweredThisTurn);
 	int income;
 	switch (powerNumber) {
 	case 0:
@@ -372,4 +372,24 @@ void CPlayer::BuildHouseOn(CCity city) {
 	//Code for computing the required money to buy a city
 	CHouse house(city);
 	m_vHouse.push_back(house);
+}
+
+pugi::xml_node CPlayer::Serialize() {
+
+	pugi::xml_node temp;
+	temp.set_name("player");
+
+	XMLAppendAttribute(temp, "name",  GetName());
+	XMLAppendAttribute(temp, "coal", GetCoal());
+	XMLAppendAttribute(temp, "oil", GetOil());
+	XMLAppendAttribute(temp, "garbage", GetGarbage());
+	XMLAppendAttribute(temp, "uranium", GetUranium());
+
+	for (int i = 0; i < GetCard().size(); i++) {
+		auto tempCard = XMLAppendChild(temp, "card");
+		XMLAppendAttribute(tempCard, "number", GetCard()[i].GetNumber());
+	}
+
+	std::cout << temp.name() << ", " << temp.attribute("name").as_string() << ", " << temp.attribute("coal").as_int() << "\n";
+	return temp;
 }

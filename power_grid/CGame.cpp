@@ -41,8 +41,11 @@ void CGame::Initialize() {
 	m_vPlayers[1].AttemptToBuyCard(&deck, 4);
 	// End of testing part
 
+	SortOrder();
+	for (int i = 0; i < m_vPlayers.size(); i++)
+		std::cout << i + 1 << ". " << m_vPlayers[i].GetName() << "\n";
 
-	while (true /* by the time the number of a player's house reaches 17, game is over*/) {
+	while (false/* by the time the number of a player's house reaches 17, game is over*/) {
 		
 		//phase 2: Bidding plant cards
 		//phase 3: Purchasing resources
@@ -88,34 +91,22 @@ void CGame::InitializeDeck() {
 
 }
 
-void CGame::SavePlayers() {
+void CGame::Save() {
 	pugi::xml_document doc;
 
 	auto declarationNode = doc.append_child(pugi::node_declaration);
 	declarationNode.append_attribute("version") = "1.0";
 
-	auto root = doc.append_child("playerList");
+	auto gameRoot = doc.append_child("game");
 
-	// MAT: Added new utility functions for cleaning up XML parsing
+	// save players
+	auto playerRoot = gameRoot.append_child("playerList");
+
 	for (int i = 0; i < NumberOfPlayers(); i++) {
-		auto tempPlayer = XMLAppendChild(root, "player");
-		XMLAppendAttribute(tempPlayer, "name", m_vPlayers[i].GetName());
-		XMLAppendAttribute(tempPlayer, "money", m_vPlayers[i].GetMoney());
-		XMLAppendAttribute(tempPlayer, "coal", m_vPlayers[i].GetCoal());
-		XMLAppendAttribute(tempPlayer, "oil", m_vPlayers[i].GetOil());
-		XMLAppendAttribute(tempPlayer, "garbage", m_vPlayers[i].GetGarbage());
-		XMLAppendAttribute(tempPlayer, "uranium", m_vPlayers[i].GetUranium());
-
-		for (int j = 0; j < m_vPlayers[i].GetCard().size(); j++) {
-			auto tempCard = XMLAppendChild(tempPlayer, "card");
-			XMLAppendAttribute(tempCard, "number", m_vPlayers[i].GetCard()[j].GetNumber());
-			XMLAppendAttribute(tempCard, "cost", m_vPlayers[i].GetCard()[j].GetCost());
-			XMLAppendAttribute(tempCard, "payment", m_vPlayers[i].GetCard()[j].GetResources());
-			XMLAppendAttribute(tempCard, "powers", m_vPlayers[i].GetCard()[j].GetCitiesPowered());
-		}
+		playerRoot.append_copy(m_vPlayers[i].Serialize());	
 	}
 
-	doc.save_file("data/player/players.xml");
+	doc.save_file("data/gamesave.xml");
 }
 
 void CGame::LoadPlayers() {
@@ -183,10 +174,16 @@ void CGame::LoadPlayers(std::string name) {
 
 }
 
-bool CGame::CompareFunction(const CPlayer &p1, const CPlayer &p2) {
+
+void CGame::SortOrder() {
+	std::sort(m_vPlayers.begin(), m_vPlayers.end(), CompareFunction);
+}
+
+bool CompareFunction(const CPlayer &p1, const CPlayer &p2) {
 	if (p1.GetHouse().size() > p2.GetHouse().size()) {
 		return true;
-	} else if (p1.GetHouse().size() == p1.GetHouse().size()) {
+	}
+	else if (p1.GetHouse().size() == p1.GetHouse().size()) {
 		if (p1.GetMaxCardNum() > p2.GetMaxCardNum()) {
 			return true;
 		}
@@ -194,12 +191,3 @@ bool CGame::CompareFunction(const CPlayer &p1, const CPlayer &p2) {
 
 	return false;
 }
-
-void CGame::SortOrder() {
-	// error C3867 : 'CGame::CompareFunction' : non - standard syntax; use '&' to create a pointer to member
-	// error C2672 : 'sort' : no matching overloaded function found
-	// error C2780 : 'void std::sort(_RanIt,_RanIt)' : expects 2 arguments - 3 provided
-	//sort(m_vPlayers.begin(), m_vPlayers.end(), CompareFunction);
-}
-
-

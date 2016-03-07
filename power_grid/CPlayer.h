@@ -70,6 +70,8 @@ public:
 	void BuildHouseOn(CCity city);
 	void GetIncome();
 
+	pugi::xml_node Serialize();
+
 private:
 	std::string m_sName;
 
