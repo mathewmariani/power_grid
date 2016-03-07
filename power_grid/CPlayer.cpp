@@ -223,34 +223,8 @@ GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
 	int fuelType = card.GetResources();
 	int cost = card.GetCost();
 
-	switch (fuelType) {
-		//clean energy
-	case 0:
-		m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
-		return GENERATE_SUCCEED;
-
-		//coal
-	case 1:
-		if (m_iCoal < cost)
-			return GENERATE_NOT_ENOUGH_RESOURCE;
-		else {
-			m_iCoal -= cost;
-			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
-			return GENERATE_SUCCEED;
-		}
-
-		//oil
-	case 2:
-		if (m_iOil < cost)
-			return GENERATE_NOT_ENOUGH_RESOURCE;
-		else {
-			m_iOil -= cost;
-			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
-			return GENERATE_SUCCEED;
-		}
-
-		//hybrid
-	case 3:
+	// MAT: Use bitwise operations since thats how i decided to store the cards
+	if ((card.GetResources() & (RESOURCE_GARBAGE | RESOURCE_OIL)) == (RESOURCE_GARBAGE | RESOURCE_OIL)) {
 		if (m_iCoal < cost) {
 			if (m_iOil < cost)
 				return GENERATE_NOT_ENOUGH_RESOURCE;
@@ -262,9 +236,23 @@ GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;
 		}
-
-		//garbage
-	case 4:
+	} else if ((card.GetResources() & RESOURCE_COAL) == RESOURCE_COAL) {
+		if (m_iCoal < cost)
+			return GENERATE_NOT_ENOUGH_RESOURCE;
+		else {
+			m_iCoal -= cost;
+			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+			return GENERATE_SUCCEED;
+		}
+	} else if ((card.GetResources() & RESOURCE_OIL) == RESOURCE_OIL) {
+		if (m_iOil < cost)
+			return GENERATE_NOT_ENOUGH_RESOURCE;
+		else {
+			m_iOil -= cost;
+			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+			return GENERATE_SUCCEED;
+		}
+	} else if ((card.GetResources() & RESOURCE_GARBAGE) == RESOURCE_GARBAGE) {
 		if (m_iGarbage < cost)
 			return GENERATE_NOT_ENOUGH_RESOURCE;
 		else {
@@ -272,9 +260,7 @@ GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;
 		}
-
-		//uranium
-	case 8:
+	} else if ((card.GetResources() & RESOURCE_URANIUM) == RESOURCE_URANIUM) {
 		if (m_iUranium < cost)
 			return GENERATE_NOT_ENOUGH_RESOURCE;
 		else {
@@ -282,10 +268,10 @@ GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;
 		}
-
-		// MAT: You always need a default
-		// otherwise you get: warning C4715: not all control paths return a value
-	default:
+	} else if ((card.GetResources() & RESOURCE_NONE) == RESOURCE_NONE) {
+		m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
+		return GENERATE_SUCCEED;
+	} else {
 		return GENERATE_NOT_ENOUGH_RESOURCE;
 	}
 }
