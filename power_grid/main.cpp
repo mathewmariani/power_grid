@@ -17,9 +17,12 @@ int main() {
 
 	//game.Initialize();
 
-	//game.SavePlayers();
+	//game.Save();
 
-	CMap m;
+	//CMap m;
+
+	CPlayer p("junan");
+	p.Serialize();
 
 	return 0;
 }
