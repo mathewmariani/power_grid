@@ -1,4 +1,5 @@
 #include "CMap.h"
+#include <fstream>
 
 CMap::CMap() {
 	pugi::xml_document doc;
@@ -32,3 +33,41 @@ CMap::CMap() {
 CMap::~CMap() {
 
 }
+
+void CMap::Serialize(pugi::xml_node &parent) {
+	auto map = XMLAppendChild(parent, "map");
+	for (CCity n : m_vCities) {
+		auto city = XMLAppendChild(map, "city");
+		XMLAppendAttribute(city, "name", n.GetName());
+		XMLAppendAttribute(city, "region", n.GetRegion());
+		for (auto &m : n.m_vConnections) {
+			auto neighbour = XMLAppendChild(city, "neighbours");
+			XMLAppendAttribute(neighbour, "name", m.first);
+			XMLAppendAttribute(neighbour, "cost", m.second);
+		}
+	}
+}
+void CMap::addCity(std::string name, std::string region) {
+	m_vCities.push_back(CCity(name, region));
+}
+/*
+void CMap::saveMap() {
+	std::ofstream map_file;
+	map_file.open("PowerGridMap.xml");
+
+	map_file << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << std::endl;
+	map_file << "<map>" << std::endl;
+	for (auto node : m_vCities) {
+		map_file << "\t<city name=" << node.GetName() << " region= " << node.GetRegion() << ">" << std::endl;
+		for (const auto &i : node.m_vConnections) {
+			map_file << "\t\t<neighbours name= '" << i.first << "' cost= '" << i.second << "'/>" << std::endl;
+		}
+		map_file << "\t</city>" << std::endl;
+	}
+	map_file << "</map>" << std::endl;
+}
+
+void CMap::addCity(std::string name, std::string region) {
+	m_vCities.push_back(CCity(name, region));
+}
+*/
