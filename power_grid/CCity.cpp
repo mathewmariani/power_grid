@@ -44,3 +44,6 @@ void CCity::AddNeighbour(std::string name, int cost) {
 	m_vConnections.insert({ name, cost });
 
 }
+
+void	CCity::setCurrentCost(int cost) { m_iCurrentCost = cost; }
+int		CCity::getCurrentCost() { return m_iCurrentCost; }

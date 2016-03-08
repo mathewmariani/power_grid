@@ -30,12 +30,17 @@ public:
 
 		std::cout << "==============================" << "\n";
 	}
+	//ANDRES: as steps progress and houses get built, the cost
+	//of building on a city increases
+	int		getCurrentCost();
+	void	setCurrentCost(int cost);
 
 private:
 	void AddNeighbour(std::string name, int cost);
 
 	std::string m_sName;
 	std::string m_sRegion;
+	int			m_iCurrentCost;
 
 	
 	std::unordered_map<std::string, int> m_vConnections;
