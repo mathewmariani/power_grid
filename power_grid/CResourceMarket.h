@@ -19,6 +19,8 @@ enum ResourceType_e {
 void ResourceMarketSellResource(ResourceType_e resource);
 void PrintResourceMarket();
 
+void SetResources(int coal, int oil, int garbage, int uranium);
+
 extern short g_iCoalCount;
 extern short g_iOilCount;
 extern short g_iGarbageCount;

@@ -46,3 +46,10 @@ void PrintResourceMarket() {
 	std::cout << "PRICE:\t\t" << CostOfUranium() << "\n\n";
 	std::cout << "==============================" << "\n";
 }
+
+void SetResources(int coal, int oil, int garbage, int uranium) {
+	g_iCoalCount = coal;
+	g_iOilCount = oil;
+	g_iGarbageCount = garbage;
+	g_iUraniumCount = uranium;
+}

@@ -15,7 +15,9 @@ public:
 		}
 	}
 	void Serialize(pugi::xml_node &parent);
-	void addCity(std::string name, std::string region);
+	void AddCity(std::string name, std::string region);
+
+	CCity GetCityByName(std::string name);
 
 private:
 	std::vector<CCity> m_vCities;

@@ -87,9 +87,19 @@ void CGame::Save() {
 	doc.save_file("data/gamesave.xml");
 }
 
-void CGame::LoadPlayers() {
+void CGame::Load() {
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file("data/player/players.xml");
+
+	//load resource market
+	pugi::xml_node resource_node = doc.child("resources");
+	SetResources(XMLParseInt(resource_node.attribute("coal")),
+		XMLParseInt(resource_node.attribute("oil")),
+		XMLParseInt(resource_node.attribute("garbage")),
+		XMLParseInt(resource_node.attribute("uranium")));
+
+
+	// load players info
 	pugi::xml_node player_node = doc.child("playerList");
 
 	for (pugi::xml_node player = player_node.first_child(); player; player = player.next_sibling()) {

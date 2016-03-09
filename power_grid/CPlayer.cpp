@@ -356,8 +356,11 @@ void CPlayer::GetIncome() {
 
 void CPlayer::BuildHouseOn(CCity city) {
 	//Code for computing the required money to buy a city
-	CHouse house(city);
-	m_vHouse.push_back(house);
+	//Junan: Just read about that a city with 3 owners cannot be sold to others any more
+	if (city.GetCount() < 3) {
+		CHouse house(city);
+		m_vHouse.push_back(house);
+	}
 }
 
 void CPlayer::Serialize(pugi::xml_node &parent) {
@@ -368,4 +371,16 @@ void CPlayer::Serialize(pugi::xml_node &parent) {
 	XMLAppendAttribute(player, "oil", GetOil());
 	XMLAppendAttribute(player, "garbage", GetGarbage());
 	XMLAppendAttribute(player, "uranium", GetUranium());
+
+	for (int i = 0; i < m_vCard.size(); i++) {
+		auto card = XMLAppendChild(player, "card");
+		XMLAppendAttribute(card, "number", m_vCard[i].GetNumber());
+	}
+
+	for (int i = 0; i < m_vHouse.size(); i++) {
+		auto house = XMLAppendChild(player, "house");
+		XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
+	}
+
+
 }
