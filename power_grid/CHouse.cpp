@@ -21,6 +21,6 @@ void CHouse::Serialize(pugi::xml_node &parent) {
 	XMLAppendAttribute(house, "player", m_Player.GetName());
 
 }
-std::string CHouse::BelongsTo() {
-	return m_Player.GetName();
+CPlayer* CHouse::BelongsTo() {
+	return &m_Player;
 }

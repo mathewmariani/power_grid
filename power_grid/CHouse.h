@@ -14,6 +14,6 @@ public:
 	void Serialize(pugi::xml_node &parent);
 
 private:
-	CCity m_City;
-	CPlayer m_Player;
+	CCity* m_City;
+	CPlayer* m_Player;
 };
