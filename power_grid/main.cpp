@@ -13,14 +13,10 @@ int main() {
 
 	// MAT: dont forget to uncomment this later, its faster to test without it
 	// create driver class
-//	CGame game;
+	CGame game;
 
-//	game.Initialize();
+	game.Initialize();
 
-//	game.Save();
-
-	CMap map;
-	map.Print();
-
+	
 	return 0;
 }

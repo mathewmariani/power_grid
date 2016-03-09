@@ -2,7 +2,6 @@
 
 #include "base.h"
 #include "CCity.h"
-#include "CPlayer.h"
 
 class CHouse {
 public:

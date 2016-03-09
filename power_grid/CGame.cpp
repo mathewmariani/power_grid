@@ -10,6 +10,7 @@ CGame::~CGame() {
 
 // MAT: Everything here is just for testing
 void CGame::Initialize() {
+	//saving test
 	std::cout << "How many players will be playing? ";
 	std::cin >> m_iNumberOfPlayers;
 
@@ -17,11 +18,52 @@ void CGame::Initialize() {
 	InitializePlayers();
 	InitializeBoard();
 	InitializeDeck();
+	InitializeMap();
 
-	//SortOrder();
-	//for (int i = 0; i < m_vPlayers.size(); i++) {
-	//	std::cout << i + 1 << ". " << m_vPlayers[i].GetName() << "\n";
-	//}
+	//Sorting the order of action
+	SortOrder();
+
+	// Auction power plant
+	for (int i = 0; i < m_vPlayers.size(); i++) {
+		m_vPlayers[i].AttemptToBuyCard(&m_Deck, i + 3);
+	}
+
+	// Buying resources, reverse order
+	for (int i = m_vPlayers.size() - 1; i >= 0; i--) {
+		m_vPlayers[i].AttemptToBuyCoal();
+		m_vPlayers[i].AttemptToBuyOil();
+		m_vPlayers[i].AttemptToBuyGarbage();
+		m_vPlayers[i].AttemptToBuyUranium();
+	}
+	
+	// building phase, reverse order
+	// error generated, so abandon this part for now
+	/*for (int i = m_vPlayers.size() - 1; i >= 0; i--) {
+		CCity city = m_Map.GetCityByName("Calgary");
+		m_vPlayers[i].BuildHouseOn(city);
+	}*/
+
+	// Adding cities
+	m_Map.AddCity("Gotham", "Whatever");
+	m_Map.AddCity("Montreal", "Quebec");
+
+
+
+	Save();
+
+
+	/*
+	//Loading test
+	Load();
+
+	std::cout << "Players have been loaded! There are " << m_vPlayers.size() << " players.\n";
+	for (int i = 0; i < m_vPlayers.size(); i++) {
+		m_vPlayers[i].Print();
+	}
+	std::cout << "Resource market has been loaded!\n";
+	PrintResourceMarket();
+
+	*/
 }
 
 int CGame::NumberOfPlayers() {
@@ -51,14 +93,23 @@ void CGame::InitializePlayers() {
 
 	//randomize the order in the beginning
 	std::random_shuffle(m_vPlayers.begin(), m_vPlayers.end());
+	std::cout << "Players have been created! There are " << m_vPlayers.size() << " players.\n";
+	for (int i = 0; i < m_vPlayers.size(); i++) {
+		m_vPlayers[i].Print();
+	}
 }
 
 void CGame::InitializeBoard() {
-
+	std::cout << "Game board has been created!\n";
 }
 
 void CGame::InitializeDeck() {
+	std::cout << "Plant card deck has been created!\n";
+}
 
+void CGame::InitializeMap() {
+	std::cout << "Map has been created!\n";
+	m_Map.Print();
 }
 
 void CGame::Save() {
@@ -84,15 +135,23 @@ void CGame::Save() {
 		m_vPlayers[i].Serialize(players);
 	}
 
+	// serialize map
+	auto map = XMLAppendChild(root, "map");
+	m_Map.Serialize(map);
+
+
 	doc.save_file("data/gamesave.xml");
+
+	std::cout << "Game saved!\n";
 }
 
 void CGame::Load() {
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file("data/player/players.xml");
+	pugi::xml_parse_result result = doc.load_file("data/gamesave.xml");
+	pugi::xml_node game = doc.child("game");
 
 	//load resource market
-	pugi::xml_node resource_node = doc.child("resources");
+	pugi::xml_node resource_node = game.child("resources");
 	SetResources(XMLParseInt(resource_node.attribute("coal")),
 		XMLParseInt(resource_node.attribute("oil")),
 		XMLParseInt(resource_node.attribute("garbage")),
@@ -100,7 +159,7 @@ void CGame::Load() {
 
 
 	// load players info
-	pugi::xml_node player_node = doc.child("playerList");
+	pugi::xml_node player_node = game.child("players");
 
 	for (pugi::xml_node player = player_node.first_child(); player; player = player.next_sibling()) {
 

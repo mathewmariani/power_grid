@@ -3,6 +3,7 @@
 #include "ISerializable.h"
 #include "CDeck.h"
 #include "CPlayer.h"
+#include "CMap.h"
 #include "base.h"
 
 enum GameState_e {
@@ -35,12 +36,16 @@ private:
 	void InitializePlayers();
 	void InitializeBoard();
 	void InitializeDeck();
-
+	void InitializeMap();
 
 	int m_iCurrentPhase;
 
 	int m_iNumberOfPlayers;
 	std::vector<CPlayer> m_vPlayers;
+
+	CDeck m_Deck;
+
+	CMap m_Map;
 };
 
 //sorting order function, make it a global function
