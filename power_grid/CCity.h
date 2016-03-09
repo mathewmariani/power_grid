@@ -44,7 +44,6 @@ private:
 	std::string m_sRegion;
 	int m_iCountHouses = 0;
 	int	m_iCurrentCost;
-
 	
 	std::unordered_map<std::string, int> m_vConnections;
 };

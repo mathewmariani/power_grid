@@ -58,5 +58,5 @@ void CCity::IncreaseCount() {
 }
 
 int	CCity::GetCost() {
-	return 10+(5* m_iCountHouses);
+	return 10 + (5 * m_iCountHouses);
 }

@@ -26,7 +26,7 @@ public:
 	const GameState_e CurrentState() const;
 
 	void Save();
-	void LoadPlayers();
+	void Load();
 	void LoadPlayers(std::string name);
 
 	void SortOrder();

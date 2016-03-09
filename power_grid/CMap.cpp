@@ -47,9 +47,18 @@ void CMap::Serialize(pugi::xml_node &parent) {
 		}
 	}
 }
-void CMap::addCity(std::string name, std::string region) {
+void CMap::AddCity(std::string name, std::string region) {
 	m_vCities.push_back(CCity(name, region));
 }
+
+CCity CMap::GetCityByName(std::string name) {
+	for (int i = 0; i < m_vCities.size(); i++) {
+		if (std::strcmp(m_vCities[i].GetName().c_str(), name.c_str()) == 0)
+			return m_vCities[i];
+	}
+}
+
+
 /*
 void CMap::saveMap() {
 	std::ofstream map_file;
