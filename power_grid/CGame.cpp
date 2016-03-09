@@ -71,6 +71,10 @@ void CGame::Save() {
 	// create game root
 	auto root = XMLAppendChild(doc, "game");
 
+	// serialize the map we were playing on
+	//auto map = XMLAppendChild(root, "map");
+	//XMLAppendAttribute(map, "name", currentMap.GetName());
+
 	// serialize the resource market
 	auto resources = XMLAppendChild(root, "resources");
 	XMLAppendAttribute(resources, "coal", g_iCoalCount);

@@ -36,7 +36,6 @@ private:
 	void InitializeBoard();
 	void InitializeDeck();
 
-
 	int m_iCurrentPhase;
 
 	int m_iNumberOfPlayers;

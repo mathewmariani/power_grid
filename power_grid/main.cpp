@@ -1,4 +1,6 @@
 #include <iostream>
+#include <random>
+
 #include "CGame.h"
 
 // MAT: get rid of these at some point AFTER testing
@@ -7,6 +9,9 @@
 #include "CDeck.h"
 #include "CCard.h"
 #include "CMap.h"
+
+// MAT: Leave this here I need it.
+extern std::default_random_engine g_random;
 
 int main() {
 	std::cout << "Welcome to Power Grid!\n\n";
@@ -19,7 +24,7 @@ int main() {
 
 //	game.Save();
 
-	CMap map;
+	CMap map("map");
 	map.Print();
 
 	return 0;

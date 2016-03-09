@@ -5,8 +5,16 @@
 
 class CMap {
 public:
-	CMap();
+	CMap(std::string name);
 	~CMap();
+
+	std::string GetMapName();
+	const std::string GetMapName() const;
+
+	void AddCity(std::string name, std::string region);
+	CCity GetCityByName(std::string name);
+
+	void Serialize(pugi::xml_node &parent);
 
 	// MAT: This should eventually override << operator
 	void Print() {
@@ -14,11 +22,8 @@ public:
 			x.Print();
 		}
 	}
-	void Serialize(pugi::xml_node &parent);
-	void AddCity(std::string name, std::string region);
-
-	CCity GetCityByName(std::string name);
 
 private:
 	std::vector<CCity> m_vCities;
+	std::string m_sName;
 };

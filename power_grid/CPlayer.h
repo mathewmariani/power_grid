@@ -66,7 +66,7 @@ public:
 	BuyResult_e AttemptToBuyOil();
 	BuyResult_e AttemptToBuyGarbage();
 	BuyResult_e AttemptToBuyUranium();
-	BuyResult_e AttemptToBuyCard(CDeck* deck, int cardNumber);
+	BuyResult_e AttemptToBuyCard(CDeck *deck, int cardNumber);
 
 	GenerateResult_e GenerateEletricity(int cardNum);
 
