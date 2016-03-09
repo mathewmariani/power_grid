@@ -44,3 +44,19 @@ void CCity::AddNeighbour(std::string name, int cost) {
 	m_vConnections.insert({ name, cost });
 
 }
+
+void CCity::ResetCount() {
+	m_iCountHouses = 0;
+}
+
+int CCity::GetCount() {
+	return m_iCountHouses;
+}
+
+void CCity::IncreaseCount() {
+	m_iCountHouses++;
+}
+
+int	CCity::GetCost() {
+	return 10+(5* m_iCountHouses);
+}
