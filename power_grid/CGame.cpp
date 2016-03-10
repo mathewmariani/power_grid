@@ -93,7 +93,7 @@ void CGame::Save() {
 
 void CGame::Load() {
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file("data/player/players.xml");
+	pugi::xml_parse_result result = doc.load_file("data/gamesave.xml");
 
 	//load resource market
 	pugi::xml_node resource_node = doc.child("resources");
