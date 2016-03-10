@@ -1,10 +1,9 @@
 #include "CMap.h"
 #include <fstream>
 
-CMap::CMap(std::string name) :
-	m_sName (name) {
+CMap::CMap() {
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(m_sName.append(".xml").c_str());
+	pugi::xml_parse_result result = doc.load_file("map.xml");
 	pugi::xml_node root = doc.child("map");
 
 	// MAT: note for myself and andres
@@ -35,25 +34,6 @@ CMap::~CMap() {
 
 }
 
-std::string CMap::GetMapName() {
-	return m_sName;
-}
-
-const std::string CMap::GetMapName() const {
-	return m_sName;
-}
-
-void CMap::AddCity(std::string name, std::string region) {
-	m_vCities.push_back(CCity(name, region));
-}
-
-CCity CMap::GetCityByName(std::string name) {
-	for (int i = 0; i < m_vCities.size(); i++) {
-		if (std::strcmp(m_vCities[i].GetName().c_str(), name.c_str()) == 0)
-			return m_vCities[i];
-	}
-}
-
 void CMap::Serialize(pugi::xml_node &parent) {
 	auto map = XMLAppendChild(parent, "map");
 	for (CCity n : m_vCities) {
@@ -67,6 +47,17 @@ void CMap::Serialize(pugi::xml_node &parent) {
 		}
 	}
 }
+void CMap::AddCity(std::string name, std::string region) {
+	m_vCities.push_back(CCity(name, region));
+}
+
+CCity CMap::GetCityByName(std::string name) {
+	for (int i = 0; i < m_vCities.size(); i++) {
+		if (std::strcmp(m_vCities[i].GetName().c_str(), name.c_str()) == 0)
+			return m_vCities[i];
+	}
+}
+
 
 /*
 void CMap::saveMap() {

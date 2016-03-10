@@ -27,6 +27,7 @@ CPlayer::CPlayer(std::string name, int money, int coal, int oil, int garbage, in
 
 }
 
+
 CPlayer::~CPlayer() {
 
 }
@@ -225,46 +226,44 @@ GenerateResult_e CPlayer::GenerateEletricity(int cardNum) {
 	// MAT: Use bitwise operations since thats how i decided to store the cards
 	if ((card.GetResources() & (RESOURCE_GARBAGE | RESOURCE_OIL)) == (RESOURCE_GARBAGE | RESOURCE_OIL)) {
 		if (m_iCoal < cost) {
-			if (m_iOil < cost) {
+			if (m_iOil < cost)
 				return GENERATE_NOT_ENOUGH_RESOURCE;
-			}
-			else {
+			else
 				m_iOil -= cost;
-				return GENERATE_SUCCEED;
-			}	
-		} else {
+		}
+		else {
 			m_iCoal -= cost;
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;
 		}
 	} else if ((card.GetResources() & RESOURCE_COAL) == RESOURCE_COAL) {
-		if (m_iCoal < cost) {
+		if (m_iCoal < cost)
 			return GENERATE_NOT_ENOUGH_RESOURCE;
-		} else {
+		else {
 			m_iCoal -= cost;
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;
 		}
 	} else if ((card.GetResources() & RESOURCE_OIL) == RESOURCE_OIL) {
-		if (m_iOil < cost) {
+		if (m_iOil < cost)
 			return GENERATE_NOT_ENOUGH_RESOURCE;
-		} else {
+		else {
 			m_iOil -= cost;
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;
 		}
 	} else if ((card.GetResources() & RESOURCE_GARBAGE) == RESOURCE_GARBAGE) {
-		if (m_iGarbage < cost) {
+		if (m_iGarbage < cost)
 			return GENERATE_NOT_ENOUGH_RESOURCE;
-		} else {
+		else {
 			m_iGarbage -= cost;
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;
 		}
 	} else if ((card.GetResources() & RESOURCE_URANIUM) == RESOURCE_URANIUM) {
-		if (m_iUranium < cost) {
+		if (m_iUranium < cost)
 			return GENERATE_NOT_ENOUGH_RESOURCE;
-		} else {
+		else {
 			m_iUranium -= cost;
 			m_iNumberOfCitiesPoweredThisTurn += card.GetCitiesPowered();
 			return GENERATE_SUCCEED;

@@ -3,8 +3,6 @@
 #include "base.h"
 #include "CCard.h"
 
-// MAT: Deck needs to be fixed at somepoint
-
 class CDeck {
 public:
 	CDeck();
