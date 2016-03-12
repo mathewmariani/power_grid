@@ -39,7 +39,6 @@ public:
 
 private:
 	void AddNeighbour(std::string name, int cost);
-	void IncreaseCount();
 	std::string m_sName;
 	std::string m_sRegion;
 	int m_iCountHouses = 0;
