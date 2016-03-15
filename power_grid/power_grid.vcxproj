@@ -147,30 +147,51 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CCard.cpp" />
-    <ClCompile Include="CCity.cpp" />
-    <ClCompile Include="CDeck.cpp" />
-    <ClCompile Include="CGame.cpp" />
-    <ClCompile Include="CHouse.cpp" />
-    <ClCompile Include="CMap.cpp" />
-    <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CBuildState.cpp" />
+    <ClCompile Include="CBureaucracyState.cpp" />
+    <ClCompile Include="CBuyPowerPlantState.cpp" />
+    <ClCompile Include="CBuyResourcesState.cpp" />
+    <ClCompile Include="CCardData.cpp" />
+    <ClCompile Include="CCityData.cpp" />
+    <ClCompile Include="CHouseData.cpp" />
+    <ClCompile Include="CMenuController.cpp" />
+    <ClCompile Include="CMenuCreateView.cpp" />
+    <ClCompile Include="CMenuLoadView.cpp" />
+    <ClCompile Include="CMenuView.cpp" />
+    <ClCompile Include="config.cpp" />
+    <ClCompile Include="CPlayerData.cpp" />
     <ClCompile Include="CResourceMarket.cpp" />
+    <ClCompile Include="CGameController.cpp" />
+    <ClCompile Include="CTurnOrderState.cpp" />
+    <ClCompile Include="CGameData.cpp" />
     <ClCompile Include="include\pugixml.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base.h" />
-    <ClInclude Include="CCard.h" />
-    <ClInclude Include="CCity.h" />
-    <ClInclude Include="CDeck.h" />
-    <ClInclude Include="CGame.h" />
-    <ClInclude Include="CHouse.h" />
-    <ClInclude Include="CMap.h" />
-    <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CBuildState.h" />
+    <ClInclude Include="CBureaucracyState.h" />
+    <ClInclude Include="CBuyResourcesState.h" />
+    <ClInclude Include="CBuyPowerPlantState.h" />
+    <ClInclude Include="CCardData.h" />
+    <ClInclude Include="CCityData.h" />
+    <ClInclude Include="CHouseData.h" />
+    <ClInclude Include="CMenuController.h" />
+    <ClInclude Include="CMenuData.h" />
+    <ClInclude Include="CMenuLoadView.h" />
+    <ClInclude Include="CMenuView.h" />
+    <ClInclude Include="CMenuCreateView.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="CPlayerData.h" />
     <ClInclude Include="CResourceMarket.h" />
-    <ClInclude Include="IObservable.h" />
+    <ClInclude Include="CStateMachine.h" />
+    <ClInclude Include="CGameController.h" />
+    <ClInclude Include="CTurnOrderState.h" />
+    <ClInclude Include="CGameData.h" />
+    <ClInclude Include="IObserver.h" />
     <ClInclude Include="ISerializable.h" />
+    <ClInclude Include="IState.h" />
     <ClInclude Include="ISubject.h" />
     <ClInclude Include="shareddef.h" />
     <ClInclude Include="util.h" />

@@ -1,12 +1,35 @@
 #pragma once
 
-#include "IObservable.h"
+// common
+#include "IObserver.h"
+
+#include "base.h"
 
 class ISubject {
 public:
-	virtual void Attach(IObservable *observable) = 0;
-	virtual void Detach(IObservable *observable) = 0;
+	ISubject() {
 
-	template <class T>
-	virtual void Notify(T value) = 0;
+	}
+
+	~ISubject() {
+		
+	}
+
+	void Attach(IObserver* observer) {
+		_observers.push_back(observer);
+
+	}
+
+	void Detach(IObserver* observer) {
+		_observers.remove(observer);
+	}
+
+	void Notify() {
+		for (auto i = _observers.begin(); i != _observers.end(); i++) {
+			(*i)->Update();
+		}
+	}
+
+private:
+	list<IObserver*> _observers;
 };

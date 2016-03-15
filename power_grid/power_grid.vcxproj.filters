@@ -19,17 +19,53 @@
     <Filter Include="Source Files\util">
       <UniqueIdentifier>{ec877207-10b0-44e3-b7e6-98f76c11a859}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\game">
-      <UniqueIdentifier>{399e88a3-17a9-49c2-b969-4896d2d24759}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\game">
       <UniqueIdentifier>{fe6ca0e2-da88-40b9-b422-18a03ddef3a4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files\data">
       <UniqueIdentifier>{e483a3ab-130d-44e9-b86a-e69c21c4fd94}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\interface">
-      <UniqueIdentifier>{9b73bd73-9398-476c-9b44-a1058393ad48}</UniqueIdentifier>
+    <Filter Include="Header Files\model">
+      <UniqueIdentifier>{7d1875ef-d35c-4bde-a3bd-43e8206d957f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\controller">
+      <UniqueIdentifier>{292598f4-56c3-4c4b-95cb-6b59a01f13f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\common">
+      <UniqueIdentifier>{fe88b2ec-40ab-4b38-9173-209064f08cf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view">
+      <UniqueIdentifier>{3ca5fac1-3301-4a33-8050-79e83fe7f3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{7593fe9a-8499-4def-a1a3-b54eac8de0f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controller">
+      <UniqueIdentifier>{fac23742-5780-4634-a0ed-845b5d38bd26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\controller\states">
+      <UniqueIdentifier>{c4d3a454-9ee2-474c-938b-d89bd63e1577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view">
+      <UniqueIdentifier>{674db3bb-8760-47b3-8a43-205d2dda7abc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controller\states">
+      <UniqueIdentifier>{c42ca00c-d015-4be3-b45e-ec446e235a01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controller\states\game">
+      <UniqueIdentifier>{f91071e8-a09b-448f-aca1-ccd5ac3cf5e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controller\states\menu">
+      <UniqueIdentifier>{e185f608-d923-4fb5-b4b8-d7c2ab3846a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\controller\states\game">
+      <UniqueIdentifier>{e144e053-52d1-4bc6-8981-e76c18ea4b26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\controller\states\menu">
+      <UniqueIdentifier>{e4ef79ca-f737-4008-846a-0235f347a6b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game">
+      <UniqueIdentifier>{0b1b7452-da8c-41e7-acb1-2465775eb6e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,26 +81,53 @@
     <ClCompile Include="CResourceMarket.cpp">
       <Filter>Source Files\game</Filter>
     </ClCompile>
-    <ClCompile Include="CPlayer.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="CPlayerData.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="CDeck.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="CCardData.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="CCard.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="CMenuView.cpp">
+      <Filter>Source Files\view</Filter>
     </ClCompile>
-    <ClCompile Include="CGame.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="CMenuController.cpp">
+      <Filter>Source Files\controller</Filter>
     </ClCompile>
-    <ClCompile Include="CHouse.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="CMenuLoadView.cpp">
+      <Filter>Source Files\view</Filter>
     </ClCompile>
-    <ClCompile Include="CCity.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="CMenuCreateView.cpp">
+      <Filter>Source Files\view</Filter>
     </ClCompile>
-    <ClCompile Include="CMap.cpp">
-      <Filter>Source Files\game</Filter>
+    <ClCompile Include="CBuildState.cpp">
+      <Filter>Source Files\controller\states\game</Filter>
+    </ClCompile>
+    <ClCompile Include="CBureaucracyState.cpp">
+      <Filter>Source Files\controller\states\game</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuyPowerPlantState.cpp">
+      <Filter>Source Files\controller\states\game</Filter>
+    </ClCompile>
+    <ClCompile Include="CBuyResourcesState.cpp">
+      <Filter>Source Files\controller\states\game</Filter>
+    </ClCompile>
+    <ClCompile Include="CTurnOrderState.cpp">
+      <Filter>Source Files\controller\states\game</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameController.cpp">
+      <Filter>Source Files\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameData.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="config.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
+    <ClCompile Include="CCityData.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="CHouseData.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,41 +137,77 @@
     <ClInclude Include="shareddef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CResourceMarket.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="CPlayer.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="CCard.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="CDeck.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="CGame.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="CHouse.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
-    <ClInclude Include="CCity.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="base.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CMap.h">
-      <Filter>Header Files\game</Filter>
+    <ClInclude Include="CPlayerData.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="IObservable.h">
-      <Filter>Header Files\interface</Filter>
+    <ClInclude Include="CCardData.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="ISerializable.h">
-      <Filter>Header Files\interface</Filter>
+      <Filter>Header Files\common</Filter>
     </ClInclude>
     <ClInclude Include="ISubject.h">
-      <Filter>Header Files\interface</Filter>
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateMachine.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CHouseData.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="CCityData.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="IObserver.h">
+      <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuView.h">
+      <Filter>Header Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuData.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuController.h">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuCreateView.h">
+      <Filter>Header Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuLoadView.h">
+      <Filter>Header Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuildState.h">
+      <Filter>Header Files\controller\states\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CBureaucracyState.h">
+      <Filter>Header Files\controller\states\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuyPowerPlantState.h">
+      <Filter>Header Files\controller\states\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CBuyResourcesState.h">
+      <Filter>Header Files\controller\states\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CTurnOrderState.h">
+      <Filter>Header Files\controller\states\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameController.h">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameData.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files\util</Filter>
+    </ClInclude>
+    <ClInclude Include="CResourceMarket.h">
+      <Filter>Header Files\game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

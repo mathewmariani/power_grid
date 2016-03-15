@@ -1,26 +1,22 @@
-#include <iostream>
-#include "CGame.h"
+#include "CGameController.h"
+#include "CMenuController.h"
 
-// MAT: get rid of these at some point AFTER testing
-#include "CResourceMarket.h"
-#include "CPlayer.h"
-#include "CDeck.h"
-#include "CCard.h"
-#include "CMap.h"
+#include "base.h"
 
 int main() {
-	std::cout << "Welcome to Power Grid!\n\n";
+	
+	// MAT: Im still finishing up...
 
-	// MAT: dont forget to uncomment this later, its faster to test without it
-	// create driver class
-//	CGame game;
-
-//	game.Initialize();
-
-//	game.Save();
-
-	CMap map;
-	map.Print();
+	CGameController tc;
+	tc.NextPhase();
+	tc.NextPhase();
+	tc.NextPhase();
+	tc.NextPhase();
+	tc.NextPhase();
+	tc.NextPhase();
+	tc.NextPhase();
+	tc.NextPhase();
+	tc.NextPhase();
 
 	return 0;
 }

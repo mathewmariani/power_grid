@@ -44,7 +44,6 @@ const int CCard::GetCost() const {
 	return this->m_iResourceCost;
 }
 
-// MAT: to access this you need to understand Binary Operations
 const int CCard::GetResources() const {
 	return this->m_iResources;
 }
