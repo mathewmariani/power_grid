@@ -153,6 +153,8 @@
     <ClCompile Include="CBuyResourcesState.cpp" />
     <ClCompile Include="CCardData.cpp" />
     <ClCompile Include="CCityData.cpp" />
+    <ClCompile Include="CDeckData.cpp" />
+    <ClCompile Include="CDeckView.cpp" />
     <ClCompile Include="CHouseData.cpp" />
     <ClCompile Include="CMenuController.cpp" />
     <ClCompile Include="CMenuCreateView.cpp" />
@@ -176,6 +178,8 @@
     <ClInclude Include="CBuyPowerPlantState.h" />
     <ClInclude Include="CCardData.h" />
     <ClInclude Include="CCityData.h" />
+    <ClInclude Include="CDeckData.h" />
+    <ClInclude Include="CDeckView.h" />
     <ClInclude Include="CHouseData.h" />
     <ClInclude Include="CMenuController.h" />
     <ClInclude Include="CMenuData.h" />

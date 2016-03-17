@@ -129,6 +129,12 @@
     <ClCompile Include="CHouseData.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="CDeckData.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="CDeckView.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -208,6 +214,12 @@
     </ClInclude>
     <ClInclude Include="CResourceMarket.h">
       <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="CDeckData.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="CDeckView.h">
+      <Filter>Header Files\view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

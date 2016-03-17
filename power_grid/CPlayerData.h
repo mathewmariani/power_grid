@@ -1,10 +1,13 @@
 #pragma once
 
 #include "base.h"
+#include "CCardData.h"
+#include "CHouseData.h"
 
 class CPlayerData {
 public:
 	CPlayerData(string name);
+	CPlayerData(std::string name, int money, int coal, int oil, int garbage, int uranium, std::vector<CCardData *> cards);
 	~CPlayerData();
 
 	string GetName();
@@ -25,6 +28,8 @@ public:
 	int GetUranium();
 	const int GetUranium() const;
 
+	void Serialize(pugi::xml_node &parent);
+
 private:
 	string m_sName;
 
@@ -33,4 +38,7 @@ private:
 	int m_iOil;
 	int m_iGarbage;
 	int m_iUranium;
+
+	std::vector<CCardData *> m_vCard;
+
 };

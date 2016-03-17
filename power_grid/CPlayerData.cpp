@@ -5,8 +5,17 @@ CPlayerData::CPlayerData(string name) :
 
 }
 
-CPlayerData::~CPlayerData() {
+CPlayerData::CPlayerData(std::string name, int money, int coal, int oil, int garbage, int uranium, std::vector<CCardData *> cards) :
+	m_sName(name),
+	m_iCoal(coal),
+	m_iOil(oil),
+	m_iGarbage(garbage),
+	m_iUranium(uranium),
+	m_vCard(cards) {
+}
 
+CPlayerData::~CPlayerData() {
+//	delete m_vCard;
 }
 
 string CPlayerData::GetName() {
@@ -55,4 +64,26 @@ int CPlayerData::GetUranium() {
 
 const int CPlayerData::GetUranium() const {
 	return m_iUranium;
+}
+
+void CPlayerData::Serialize(pugi::xml_node &parent) {
+	auto player = XMLAppendChild(parent, "player");
+	XMLAppendAttribute(player, "name", GetName());
+	XMLAppendAttribute(player, "money", GetMoney());
+	XMLAppendAttribute(player, "coal", GetCoal());
+	XMLAppendAttribute(player, "oil", GetOil());
+	XMLAppendAttribute(player, "garbage", GetGarbage());
+	XMLAppendAttribute(player, "uranium", GetUranium());
+
+	
+	for (int i = 0; i < m_vCard.size(); i++) {
+		auto card = XMLAppendChild(player, "card");
+		XMLAppendAttribute(card, "number", m_vCard[i]->GetNumber());
+	}
+	/*
+	for (int i = 0; i < m_vHouse.size(); i++) {
+		auto house = XMLAppendChild(player, "house");
+		XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
+	}
+	*/
 }
