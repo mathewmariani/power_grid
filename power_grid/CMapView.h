@@ -1,10 +1,5 @@
 #pragma once
-#pragma once
-
-// Model
 #include "CMapData.h"
-
-// Common
 #include "IObserver.h"
 
 #include "base.h"
