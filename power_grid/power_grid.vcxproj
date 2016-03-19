@@ -156,6 +156,8 @@
     <ClCompile Include="CDeckData.cpp" />
     <ClCompile Include="CDeckView.cpp" />
     <ClCompile Include="CHouseData.cpp" />
+    <ClCompile Include="CMapData.cpp" />
+    <ClCompile Include="CMapView.cpp" />
     <ClCompile Include="CMenuController.cpp" />
     <ClCompile Include="CMenuCreateView.cpp" />
     <ClCompile Include="CMenuLoadView.cpp" />
@@ -182,12 +184,14 @@
     <ClInclude Include="CDeckData.h" />
     <ClInclude Include="CDeckView.h" />
     <ClInclude Include="CHouseData.h" />
+    <ClInclude Include="CMapView.h" />
     <ClInclude Include="CMenuController.h" />
     <ClInclude Include="CMenuData.h" />
     <ClInclude Include="CMenuLoadView.h" />
     <ClInclude Include="CMenuState.h" />
     <ClInclude Include="CMenuView.h" />
     <ClInclude Include="CMenuCreateView.h" />
+    <ClInclude Include="CMapData.h" />
     <ClInclude Include="CNewGameState.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="CPlayerData.h" />

@@ -138,6 +138,12 @@
     <ClCompile Include="CMenuState.cpp">
       <Filter>Source Files\controller\states</Filter>
     </ClCompile>
+    <ClCompile Include="CMapData.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="CMapView.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -226,6 +232,12 @@
     </ClInclude>
     <ClInclude Include="CNewGameState.h">
       <Filter>Header Files\controller\states</Filter>
+    </ClInclude>
+    <ClInclude Include="CMapView.h">
+      <Filter>Header Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="CMapData.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
