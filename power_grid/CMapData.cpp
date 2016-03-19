@@ -5,11 +5,13 @@ CMapData::CMapData() {}
 CMapData::~CMapData() {}
 
 void CMapData::Serialize(pugi::xml_node &parent) {
-	//ANDRES: serialization goes here
+	//ANDRES: serialisation goes here when we decide
+	//to write it
 }
 
 void CMapData::AddCity(std::string name, std::string region) {
 	m_vCities.push_back(CCityData(name, region));
+	Notify();
 }
 
 CCityData CMapData::GetCityByName(std::string name) {
