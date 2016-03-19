@@ -1,8 +1,5 @@
 #pragma once
 
-// Model
-#include "CMenuData.h"
-
 // Common
 #include "IObserver.h"
 

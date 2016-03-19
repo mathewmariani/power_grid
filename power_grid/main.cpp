@@ -1,27 +1,17 @@
 #include "CGameController.h"
-#include "CMenuController.h"
+
+// Main States
+#include "CMenuState.h"
+
 #include "CGameData.h"
 #include "config.h"
 
 #include "base.h"
 
 int main() {
-	
-	// MAT: Im still finishing up...
-
-	/*
-	//Saving simulation
-	CPlayerData p1("aaa");
-	CPlayerData p2("bbb");
-
-	pGameData->playerList.push_back(p1);
-	pGameData->playerList.push_back(p2);
-
-	Config::SaveGame(pGameData);
-	*/
-
-	//Loading simulation
-	Config::LoadGame(pGameData);
-	pGameData->Print();
+	CGameController game;
+	game.AddState("menustate", new CMenuState);
+	game.AddState("gamestate", new CMenuState);
+	game.ChangeState("menustate");
 	return 0;
 }

@@ -159,6 +159,7 @@
     <ClCompile Include="CMenuController.cpp" />
     <ClCompile Include="CMenuCreateView.cpp" />
     <ClCompile Include="CMenuLoadView.cpp" />
+    <ClCompile Include="CMenuState.cpp" />
     <ClCompile Include="CMenuView.cpp" />
     <ClCompile Include="config.cpp" />
     <ClCompile Include="CPlayerData.cpp" />
@@ -184,12 +185,13 @@
     <ClInclude Include="CMenuController.h" />
     <ClInclude Include="CMenuData.h" />
     <ClInclude Include="CMenuLoadView.h" />
+    <ClInclude Include="CMenuState.h" />
     <ClInclude Include="CMenuView.h" />
     <ClInclude Include="CMenuCreateView.h" />
+    <ClInclude Include="CNewGameState.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="CPlayerData.h" />
     <ClInclude Include="CResourceMarket.h" />
-    <ClInclude Include="CStateMachine.h" />
     <ClInclude Include="CGameController.h" />
     <ClInclude Include="CTurnOrderState.h" />
     <ClInclude Include="CGameData.h" />

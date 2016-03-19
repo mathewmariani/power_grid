@@ -135,6 +135,9 @@
     <ClCompile Include="CDeckView.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
+    <ClCompile Include="CMenuState.cpp">
+      <Filter>Source Files\controller\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -159,9 +162,6 @@
       <Filter>Header Files\common</Filter>
     </ClInclude>
     <ClInclude Include="IState.h">
-      <Filter>Header Files\common</Filter>
-    </ClInclude>
-    <ClInclude Include="CStateMachine.h">
       <Filter>Header Files\common</Filter>
     </ClInclude>
     <ClInclude Include="CHouseData.h">
@@ -220,6 +220,12 @@
     </ClInclude>
     <ClInclude Include="CDeckView.h">
       <Filter>Header Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuState.h">
+      <Filter>Header Files\controller\states\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="CNewGameState.h">
+      <Filter>Header Files\controller\states</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

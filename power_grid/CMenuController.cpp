@@ -2,7 +2,7 @@
 
 CMenuController::CMenuController() {
 	m_MenuData.Attach(this);
-	m_MenuView.Initialize(&m_MenuData);
+	//m_MenuView.Initialize(&m_MenuData);
 
 	while (m_MenuData.GetState() == SELECTION_NONE) {
 		int input = 0;

@@ -1,11 +1,10 @@
 #pragma once
 
-// MAT: Forward decleration... hmm
-class CStateMachine;
+class CGameController;
 
 class IState {
 public:
-	void Initialize(CStateMachine *pOwner) {
+	void Initialize(CGameController *pOwner) {
 		if (pOwner != nullptr) {
 			m_pOwner = pOwner;
 		}
@@ -15,5 +14,5 @@ public:
 	virtual void Exit() = 0;
 
 private:
-	CStateMachine *m_pOwner;
+	CGameController *m_pOwner;
 };
