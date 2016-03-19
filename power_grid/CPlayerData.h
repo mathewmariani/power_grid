@@ -28,6 +28,12 @@ public:
 	int GetUranium();
 	const int GetUranium() const;
 
+	std::vector<CHouseData> GetHouse();
+	const std::vector<CHouseData> GetHouse() const;
+
+	std::vector<CCardData *> GetCard();
+	const std::vector<CCardData *> GetCard() const;
+
 	void Serialize(pugi::xml_node &parent);
 
 private:
@@ -40,5 +46,7 @@ private:
 	int m_iUranium;
 
 	std::vector<CCardData *> m_vCard;
+	
+	std::vector<CHouseData> m_vHouse;
 
 };

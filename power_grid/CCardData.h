@@ -1,5 +1,7 @@
 #pragma once
 
+#include "base.h"
+
 class CCardData {
 public:
 	CCardData();
@@ -17,6 +19,8 @@ public:
 
 	int GetCitiesPowered();
 	const int GetCitiesPowered() const;
+
+	void Print();
 
 private:
 	int m_iNumber;

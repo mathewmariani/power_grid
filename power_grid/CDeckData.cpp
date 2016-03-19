@@ -82,6 +82,8 @@ void CDeckData::PlayerBuysCard(int number) {
 			break;
 	}
 	m_vInMarket.insert(m_vInMarket.begin() + pos, card);
+
+	Notify();
 }
 
 
@@ -105,14 +107,21 @@ void CDeckData::FillInMarket() {
 			break;
 	}
 	m_vInMarket.insert(m_vInMarket.begin() + pos, card);
+
+	Notify();
 }
 
-
+//Junan: this function is for loading pattern.
 CCardData *CDeckData::FindCardInHold(int number) {
 	for (int i = 0; i < m_vInHold.size(); i++) {
 		if (m_vInHold[i].GetNumber() == number)
 			return &m_vInHold[i];
 	}
+}
+
+
+std::vector<CCardData> CDeckData::GetMarket() {
+	return this->m_vInMarket;
 }
 
 void CDeckData::Serialize(pugi::xml_node &parent) {
