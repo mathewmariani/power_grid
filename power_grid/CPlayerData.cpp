@@ -66,6 +66,22 @@ const int CPlayerData::GetUranium() const {
 	return m_iUranium;
 }
 
+std::vector<CHouseData> CPlayerData::GetHouse() {
+	return m_vHouse;
+}
+
+const std::vector<CHouseData> CPlayerData::GetHouse() const {
+	return m_vHouse;
+}
+
+std::vector<CCardData *> CPlayerData::GetCard() {
+	return m_vCard;
+}
+
+const std::vector<CCardData *> CPlayerData::GetCard() const {
+	return m_vCard;
+}
+
 void CPlayerData::Serialize(pugi::xml_node &parent) {
 	auto player = XMLAppendChild(parent, "player");
 	XMLAppendAttribute(player, "name", GetName());
@@ -80,10 +96,10 @@ void CPlayerData::Serialize(pugi::xml_node &parent) {
 		auto card = XMLAppendChild(player, "card");
 		XMLAppendAttribute(card, "number", m_vCard[i]->GetNumber());
 	}
-	/*
+	
 	for (int i = 0; i < m_vHouse.size(); i++) {
 		auto house = XMLAppendChild(player, "house");
 		XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
 	}
-	*/
+	
 }
