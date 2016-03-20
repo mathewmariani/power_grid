@@ -144,6 +144,9 @@
     <ClCompile Include="CMapView.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
+    <ClCompile Include="CCityView.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -238,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="CMapData.h">
       <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="CCityView.h">
+      <Filter>Header Files\view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

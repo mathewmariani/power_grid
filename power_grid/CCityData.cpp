@@ -33,3 +33,17 @@ string CCityData::GetNeighbours() {
 	}
 	return neighbours;
 }
+
+void CCityData::AddNeighbour(string name, int cost) {
+	m_vConnections[name] = cost;
+	Notify();
+}
+
+void CCityData::AddHouse(CHouseData* house) {
+	m_vHouses.push_back(house);
+	Notify();
+}
+
+int CCityData::GetHouses() {
+	return m_vHouses.size();
+}

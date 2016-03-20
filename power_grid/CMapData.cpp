@@ -13,6 +13,11 @@ void CMapData::AddCity(std::string name, std::string region) {
 	Notify();
 }
 
+void CMapData::AddCity(CCityData city) {
+	m_vCities.push_back(city);
+	Notify();
+}
+
 CCityData CMapData::GetCityByName(std::string name) {
 	for (int i = 0; i < m_vCities.size(); i++) {
 		if (std::strcmp(m_vCities[i].GetName().c_str(), name.c_str()) == 0)

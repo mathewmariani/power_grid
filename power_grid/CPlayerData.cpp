@@ -99,7 +99,10 @@ void CPlayerData::Serialize(pugi::xml_node &parent) {
 	
 	for (int i = 0; i < m_vHouse.size(); i++) {
 		auto house = XMLAppendChild(player, "house");
-		XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
+		//ANDRES: We don't yet have a GetCity method. Uncomment the following
+		//line when we do
+
+		//XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
 	}
 	
 }

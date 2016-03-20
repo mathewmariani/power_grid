@@ -10,7 +10,10 @@ public:
 	~CMapData();
 
 	void Serialize(pugi::xml_node &parent);
+
 	void AddCity(std::string name, std::string region);
+	void AddCity(CCityData city);
+	
 	void DisplayCities();
 	CCityData GetCityByName(std::string name);
 
