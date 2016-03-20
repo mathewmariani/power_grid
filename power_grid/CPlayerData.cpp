@@ -96,10 +96,11 @@ void CPlayerData::Serialize(pugi::xml_node &parent) {
 		auto card = XMLAppendChild(player, "card");
 		XMLAppendAttribute(card, "number", m_vCard[i]->GetNumber());
 	}
-	
+	/*
 	for (int i = 0; i < m_vHouse.size(); i++) {
 		auto house = XMLAppendChild(player, "house");
 		XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
 	}
+	*/
 	
 }
