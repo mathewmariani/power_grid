@@ -52,3 +52,9 @@ const int CCardData::GetCitiesPowered() const {
 	return this->m_iNumberOfCitiesPowered;
 }
 
+void CCardData::Print() {
+	std::cout << "Number: " << m_iNumber << "\n";
+	std::cout << "Cost: " << m_iResourceCost << "\n";
+	std::cout << "Resource: " << m_iResources << "\n";
+	std::cout << "Powers: " << m_iNumberOfCitiesPowered << "\n";
+}

@@ -13,5 +13,6 @@ void CMapView::Initialize(CMapData* pData) {
 }
 
 void CMapView::Update() {
-
+	std::cout << "This is the current list of cities on the map" << std::endl;
+	m_pModel->DisplayCities();
 }
