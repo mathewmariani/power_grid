@@ -53,6 +53,7 @@ const int CCardData::GetCitiesPowered() const {
 }
 
 void CCardData::Print() {
+	std::cout << "----------------------------\n";
 	std::cout << "Number: " << m_iNumber << "\n";
 	std::cout << "Cost: " << m_iResourceCost << "\n";
 	std::cout << "Resource: " << m_iResources << "\n";
