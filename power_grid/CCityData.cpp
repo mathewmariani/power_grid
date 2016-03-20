@@ -25,3 +25,11 @@ string CCityData::GetRegion() {
 const string CCityData::GetRegion() const {
 	return m_sRegion;
 }
+
+string CCityData::GetNeighbours() {
+	string neighbours = "";
+	for (auto &i : m_vConnections) {
+		neighbours = neighbours + i.first + ", ";
+	}
+	return neighbours;
+}
