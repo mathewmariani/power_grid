@@ -13,6 +13,8 @@ public:
 	string GetRegion();
 	const string GetRegion() const;
 
+	string GetNeighbours();
+
 private:
 	string m_sName;
 	string m_sRegion;
