@@ -2,16 +2,19 @@
 
 // Main States
 #include "CMenuState.h"
-
-#include "CGameData.h"
-#include "config.h"
+#include "CInitializeState.h"
+#include "CGameState.h"
 
 #include "base.h"
 
 int main() {
-	CGameController game;
-	game.AddState("menustate", new CMenuState);
-	game.AddState("gamestate", new CMenuState);
-	game.ChangeState("menustate");
+	//CGameController game;
+	//game.AddState("menustate", new CMenuState);			// Decide if were loading or starting a new
+	//game.AddState("initstate", new CInitializeState);	// Create new game
+	//game.AddState("gamestate", new CGameState);			// where the game happens
+	//game.LoadState("menustate");
+
+	CGameController tc;
+
 	return 0;
 }

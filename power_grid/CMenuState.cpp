@@ -1,4 +1,5 @@
 #include "CMenuState.h"
+#include "CGameController.h"
 
 CMenuState::CMenuState() {
 
@@ -10,16 +11,18 @@ CMenuState::~CMenuState() {
 
 
 void CMenuState::Enter() {
-	data.Attach(&view);
-	view.SetData(&data);
-	view.Render();
+	std::cout << "NEW GAME!\n";
+	//m_pOwner->LoadState("initstate");
+	//data.Attach(&view);
+	//view.SetData(&data);
+	//view.Render();
 
-	HandleInput();
+	//HandleInput();
 }
 
 void CMenuState::Exit() {
-	data.Detach(&view);
-	std::cout << "Exiting Menu State!\n";
+	//data.Detach(&view);
+	//std::cout << "Exiting\n";
 }
 
 void CMenuState::HandleInput() {
@@ -32,8 +35,8 @@ void CMenuState::HandleInput() {
 
 	switch (data.GetState()) {
 	case SELECTION_NEW:
-		// MAT: Add Logic here to inialize a new game!
-		std::cout << "Start new game!\n";
+		std::cout << "NEW GAME!\n";
+		//m_pOwner->LoadState("initstate");
 		break;
 	case SELECTION_LOAD:
 		// MAT: Add Logic here to load last saved game!

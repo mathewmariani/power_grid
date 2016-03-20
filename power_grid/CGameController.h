@@ -1,27 +1,39 @@
+//#pragma once
+//
+//// Common
+//#include "StateMachine.h"
+//
+//#include "base.h"
+//
+//// MAT: Hold all the game data here
+//class CGameController : StateMachine {
+//public:
+//	CGameController();
+//	~CGameController();
+//
+//	void AddState(string name, IState* pState);
+//	void LoadState(string name);
+//	
+//private:
+//	std::unordered_map<string, IState*> m_States;
+//};
+
 #pragma once
 
 // Common
-#include "IState.h"
+#include "StateMachine.h"
 
 #include "base.h"
 
 // MAT: Hold all the game data here
-class CGameController {
+class CGameController : StateMachine {
 public:
 	CGameController();
 	~CGameController();
 
-	void AddState(string name, IState* pState);
-	void ChangeState(string name);
-
-	IState* GetCurrentState();
-	const IState* GetCurrentState() const;
+	void NextPhase();
 
 private:
-	void Transition(IState* pState);
-	
-private:
-	std::unordered_map<string, IState*> m_States;
-	IState* m_pCurrentState;
-	bool m_bInTransition;
+	vector<IState *> m_States;
+	vector<IState *>::iterator m_Phase;
 };

@@ -16,6 +16,7 @@ public:
 	~CTurnOrderState();
 
 	// IState
+	void Start();
 	void Enter();
 	void Exit();
 };

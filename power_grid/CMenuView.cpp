@@ -28,6 +28,5 @@ void CMenuView::Render() {
 
 // IObserver
 void CMenuView::Update() {
-	system("cls");
 	Render();
 }

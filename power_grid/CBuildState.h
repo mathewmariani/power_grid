@@ -12,6 +12,7 @@ public:
 	~CBuildState();
 
 	// IState
+	void Start();
 	void Enter();
 	void Exit();
 };

@@ -9,10 +9,9 @@ public:
 			m_pOwner = pOwner;
 		}
 	}
-
+	virtual void Start() = 0;
 	virtual void Enter() = 0;
 	virtual void Exit() = 0;
 
-private:
 	CGameController *m_pOwner;
 };

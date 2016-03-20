@@ -12,6 +12,7 @@ public:
 	~CBuyResourcesState();
 
 	// IState
+	void Start();
 	void Enter();
 	void Exit();
 };

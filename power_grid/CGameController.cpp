@@ -1,56 +1,77 @@
 // Controller
+//#include "CGameController.h"
+//
+//CGameController::CGameController() {
+//
+//}
+//
+//CGameController::~CGameController() {
+//	for (auto it = m_States.begin(); it != m_States.end(); ++it) {
+//		delete (it->second);
+//	}
+//}
+//
+//void CGameController::AddState(string name, IState* pState) {
+//	pState->Initialize(this);
+//	m_States.insert({ name, pState });
+//}
+//
+//void CGameController::LoadState(string name) {
+//	auto pState = m_States.find(name);
+//
+//	if (pState == m_States.end()) {
+//		std::cout << "!!! ERROR: State not found" << std::endl;
+//	} else {
+//		ChangeState(pState->second);
+//	}
+//}
+
+// Controller
 #include "CGameController.h"
 
-CGameController::CGameController() {
+// States
+#include "CTurnOrderState.h"
+#include "CBuyPowerPlantState.h"
+#include "CBuyResourcesState.h"
+#include "CBuildState.h"
+#include "CBureaucracyState.h"
 
+// Model
+#include "CGameData.h"
+
+CGameController::CGameController() {
+	m_States.push_back(new CTurnOrderState);
+	m_States.push_back(new CBuyPowerPlantState);
+	m_States.push_back(new CBuyResourcesState);
+	m_States.push_back(new CBuildState);
+	m_States.push_back(new CBureaucracyState);
+
+	for (auto it = m_States.begin(); it != m_States.end(); it++) {
+		(*it)->Initialize(this);
+	}
+
+	m_Phase = m_States.begin();
+	ChangeState(*m_Phase);
 }
 
 CGameController::~CGameController() {
-	for (auto it = m_States.begin(); it != m_States.end(); ++it) {
-		delete (it->second);
+	while (!m_States.empty()) {
+		delete m_States.back();
+		m_States.pop_back();
 	}
 }
 
-void CGameController::AddState(string name, IState* pState) {
-	pState->Initialize(this);
-	m_States.insert({ name, pState });
-}
+void CGameController::NextPhase() {
+	// MAT: I dont like it, but runtime seems to like it
+	if (m_Phase != m_States.end()) {
+		m_Phase++;
 
-void CGameController::ChangeState(string name) {
-	auto pState = m_States.find(name);
+		if (m_Phase == m_States.end()) {
+			std::cout << "That's a complete round!\n\n";
+			m_Phase = m_States.begin();
+			pGameData->currentRound++;
+		}
 
-	if (pState == m_States.end()) {
-		std::cout << "!!! ERROR: State not found" << std::endl;
-	} else {
-		Transition(pState->second);
+		ChangeState(*m_Phase);
 	}
-}
-
-IState* CGameController::GetCurrentState() {
-	return m_pCurrentState;
-}
-
-const IState* CGameController::GetCurrentState() const {
-	return m_pCurrentState;
-}
-
-void CGameController::Transition(IState* pState) {
-	if (pState == nullptr) {
-		return;
-	}
-
-	if (m_pCurrentState == pState || m_bInTransition) {
-		return;
-	}
-
-	m_bInTransition = true;
-
-	if (m_pCurrentState != nullptr) {
-		m_pCurrentState->Exit();
-	}
-
-	m_pCurrentState = pState;
-	m_pCurrentState->Enter();
-
-	m_bInTransition = false;
 }

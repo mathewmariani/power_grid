@@ -155,10 +155,11 @@
     <ClCompile Include="CCityData.cpp" />
     <ClCompile Include="CDeckData.cpp" />
     <ClCompile Include="CDeckView.cpp" />
+    <ClCompile Include="CGameState.cpp" />
     <ClCompile Include="CHouseData.cpp" />
+    <ClCompile Include="CInitializeState.cpp" />
     <ClCompile Include="CMapData.cpp" />
     <ClCompile Include="CMapView.cpp" />
-    <ClCompile Include="CMenuController.cpp" />
     <ClCompile Include="CMenuCreateView.cpp" />
     <ClCompile Include="CMenuLoadView.cpp" />
     <ClCompile Include="CMenuState.cpp" />
@@ -183,16 +184,16 @@
     <ClInclude Include="CCityData.h" />
     <ClInclude Include="CDeckData.h" />
     <ClInclude Include="CDeckView.h" />
+    <ClInclude Include="CGameState.h" />
     <ClInclude Include="CHouseData.h" />
     <ClInclude Include="CMapView.h" />
-    <ClInclude Include="CMenuController.h" />
     <ClInclude Include="CMenuData.h" />
     <ClInclude Include="CMenuLoadView.h" />
     <ClInclude Include="CMenuState.h" />
     <ClInclude Include="CMenuView.h" />
     <ClInclude Include="CMenuCreateView.h" />
     <ClInclude Include="CMapData.h" />
-    <ClInclude Include="CNewGameState.h" />
+    <ClInclude Include="CInitializeState.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="CPlayerData.h" />
     <ClInclude Include="CResourceMarket.h" />
@@ -204,6 +205,7 @@
     <ClInclude Include="IState.h" />
     <ClInclude Include="ISubject.h" />
     <ClInclude Include="shareddef.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>

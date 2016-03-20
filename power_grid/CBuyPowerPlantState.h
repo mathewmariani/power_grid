@@ -1,6 +1,7 @@
 #pragma once
 
 // Common
+#include "StateMachine.h"
 #include "IState.h"
 #include "ISubject.h"
 
@@ -12,6 +13,7 @@ public:
 	~CBuyPowerPlantState();
 
 	// IState
+	void Start();
 	void Enter();
 	void Exit();
 };

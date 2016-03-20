@@ -12,6 +12,7 @@ public:
 	~CBureaucracyState();
 
 	// IState
+	void Start();
 	void Enter();
 	void Exit();
 };

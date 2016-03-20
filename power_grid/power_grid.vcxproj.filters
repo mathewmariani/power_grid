@@ -55,14 +55,8 @@
     <Filter Include="Source Files\controller\states\game">
       <UniqueIdentifier>{f91071e8-a09b-448f-aca1-ccd5ac3cf5e8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\controller\states\menu">
-      <UniqueIdentifier>{e185f608-d923-4fb5-b4b8-d7c2ab3846a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\controller\states\game">
       <UniqueIdentifier>{e144e053-52d1-4bc6-8981-e76c18ea4b26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\controller\states\menu">
-      <UniqueIdentifier>{e4ef79ca-f737-4008-846a-0235f347a6b9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\game">
       <UniqueIdentifier>{0b1b7452-da8c-41e7-acb1-2465775eb6e7}</UniqueIdentifier>
@@ -89,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="CMenuView.cpp">
       <Filter>Source Files\view</Filter>
-    </ClCompile>
-    <ClCompile Include="CMenuController.cpp">
-      <Filter>Source Files\controller</Filter>
     </ClCompile>
     <ClCompile Include="CMenuLoadView.cpp">
       <Filter>Source Files\view</Filter>
@@ -144,6 +135,12 @@
     <ClCompile Include="CMapView.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
+    <ClCompile Include="CGameState.cpp">
+      <Filter>Source Files\controller\states</Filter>
+    </ClCompile>
+    <ClCompile Include="CInitializeState.cpp">
+      <Filter>Source Files\controller\states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -185,9 +182,6 @@
     <ClInclude Include="CMenuData.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="CMenuController.h">
-      <Filter>Header Files\controller</Filter>
-    </ClInclude>
     <ClInclude Include="CMenuCreateView.h">
       <Filter>Header Files\view</Filter>
     </ClInclude>
@@ -227,17 +221,23 @@
     <ClInclude Include="CDeckView.h">
       <Filter>Header Files\view</Filter>
     </ClInclude>
-    <ClInclude Include="CMenuState.h">
-      <Filter>Header Files\controller\states\menu</Filter>
-    </ClInclude>
-    <ClInclude Include="CNewGameState.h">
-      <Filter>Header Files\controller\states</Filter>
-    </ClInclude>
     <ClInclude Include="CMapView.h">
       <Filter>Header Files\view</Filter>
     </ClInclude>
     <ClInclude Include="CMapData.h">
       <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameState.h">
+      <Filter>Header Files\controller\states</Filter>
+    </ClInclude>
+    <ClInclude Include="CMenuState.h">
+      <Filter>Header Files\controller\states</Filter>
+    </ClInclude>
+    <ClInclude Include="CInitializeState.h">
+      <Filter>Header Files\controller\states</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Header Files\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
