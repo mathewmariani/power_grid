@@ -2,7 +2,7 @@
 
 CCityData::CCityData(std::string name, std::string region) :
 	m_sName(name),
-	m_sRegion(name) {
+	m_sRegion(region) {
 
 }
 
