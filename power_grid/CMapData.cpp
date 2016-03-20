@@ -19,3 +19,11 @@ CCityData CMapData::GetCityByName(std::string name) {
 			return m_vCities[i];
 	}
 }
+
+void CMapData::DisplayCities() {
+	for (CCityData city : m_vCities) {
+		std::cout << "City: " << city.GetName() << ", " << city.GetRegion() << std::endl;
+		std::cout << "\tNeighbours: " << city.GetNeighbours();
+		std::cout << "\n";
+	}
+}

@@ -2,7 +2,7 @@
 
 CCityData::CCityData(std::string name, std::string region) :
 	m_sName(name),
-	m_sRegion(name) {
+	m_sRegion(region) {
 
 }
 
@@ -24,4 +24,12 @@ string CCityData::GetRegion() {
 
 const string CCityData::GetRegion() const {
 	return m_sRegion;
+}
+
+string CCityData::GetNeighbours() {
+	string neighbours = "";
+	for (auto &i : m_vConnections) {
+		neighbours = neighbours + i.first + ", ";
+	}
+	return neighbours;
 }
