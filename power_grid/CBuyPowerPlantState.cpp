@@ -12,8 +12,10 @@ CBuyPowerPlantState::~CBuyPowerPlantState() {
 
 void CBuyPowerPlantState::Start() {
 	std::cout << "Start Buy Power Plant State\n";
+
 	int round = 1;
 	int biddingPrice, index;
+
 	std::vector<CPlayerData *> biddersThisRound;
 	std::vector<CPlayerData *> bidderList;
 	for (int i = 0; i < pGameData->playerList.size(); i++) {
@@ -69,7 +71,10 @@ void CBuyPowerPlantState::Start() {
 			}
 
 		}
+
 		std::cout << "System: Player " << biddersThisRound[0]->GetName() << " bought plant card finally!\n";
+		biddersThisRound[0]->ConsumeMoney(biddingPrice);
+		biddersThisRound[0]->BuyCard(pGameData->deck.PlayerBuysCard(index));
 		for (int i = 0; i < bidderList.size(); i++) {
 			if (bidderList[i] == biddersThisRound[0]) {
 				bidderList.erase(bidderList.begin() + i);

@@ -86,6 +86,14 @@ const std::vector<CCardData *> CPlayerData::GetCard() const {
 	return m_vCard;
 }
 
+void CPlayerData::BuyCard(CCardData* card) {
+	m_vCard.push_back(card);
+}
+
+void CPlayerData::ConsumeMoney(int amount) {
+	m_iMoney -= amount;
+}
+
 void CPlayerData::Serialize(pugi::xml_node &parent) {
 	auto player = XMLAppendChild(parent, "player");
 	XMLAppendAttribute(player, "name", GetName());

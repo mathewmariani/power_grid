@@ -38,6 +38,10 @@ public:
 	std::vector<CCardData *> GetCard();
 	const std::vector<CCardData *> GetCard() const;
 
+	void BuyCard(CCardData* card);
+
+	void ConsumeMoney(int amount);
+
 	void Serialize(pugi::xml_node &parent);
 
 private:
