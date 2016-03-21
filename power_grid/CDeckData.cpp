@@ -63,27 +63,26 @@ CDeckData::~CDeckData() {
 //        Basically, it is devided in 2 parts: First, it removes the corresponding card
 //        from the market vector. Second, it removes the first card from the deck vector,
 //        and insert it into the right position of the market vector.
-void CDeckData::PlayerBuysCard(int number) {
-	for (int i = 0; i < m_vInMarket.size(); i++) {
-		if (number == m_vInMarket[i].GetNumber()) {
-			m_vInHold.push_back(m_vInMarket[i]);
-			m_vInMarket.erase(m_vInMarket.begin() + i);
-			break;
-		}
-	}
+CCardData* CDeckData::PlayerBuysCard(int index) {
 
-	auto card = m_vInDeck[0];
+	m_vInHold.push_back(m_vInMarket[index]);
+	CCardData* card = &m_vInHold.back();
+
+	m_vInMarket.erase(m_vInMarket.begin() + index);
+
+	auto newCard = m_vInDeck[0];
 	m_vInDeck.erase(m_vInDeck.begin());
 	int pos = 0;
 	for (int i = 0; i < m_vInMarket.size(); i++) {
-		if (m_vInMarket[i].GetNumber() < card.GetNumber())
+		if (m_vInMarket[i].GetNumber() < newCard.GetNumber())
 			pos++;
 		else
 			break;
 	}
-	m_vInMarket.insert(m_vInMarket.begin() + pos, card);
+	m_vInMarket.insert(m_vInMarket.begin() + pos, newCard);
 
 	Notify();
+	return card;
 }
 
 
@@ -112,7 +111,7 @@ void CDeckData::FillInMarket() {
 }
 
 //Junan: this function is for loading pattern.
-CCardData *CDeckData::FindCardInHold(int number) {
+CCardData* CDeckData::FindCardInHold(int number) {
 	for (int i = 0; i < m_vInHold.size(); i++) {
 		if (m_vInHold[i].GetNumber() == number)
 			return &m_vInHold[i];

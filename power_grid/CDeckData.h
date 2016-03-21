@@ -11,9 +11,10 @@ public:
 
 	void SetDeck(std::vector<CCardData> deck1, std::vector<CCardData> deck2, std::vector<CCardData> deck3, std::vector<CCardData> deck4);
 
-	void PlayerBuysCard(int number);
+	CCardData* PlayerBuysCard(int index);
 	void FillInMarket();
-	CCardData *FindCardInHold(int number);
+
+	CCardData* FindCardInHold(int number);
 
 	std::vector<CCardData> GetMarket();
 
