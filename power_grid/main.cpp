@@ -11,6 +11,8 @@
 #include "CMarket.h"
 #include "CMarketView.h"
 
+#include "CBuyPowerPlantState.h"
+
 int main() {
 
 	//CMapData testMap;
@@ -23,7 +25,7 @@ int main() {
 	//game.AddState("menu", new CMenuState);
 	//game.AddState("game", new CGameState);
 	//game.LoadState("menu");
-
+	
 	CMarket market;
 	CMarketView view;
 

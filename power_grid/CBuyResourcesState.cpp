@@ -10,6 +10,11 @@ CBuyResourcesState::~CBuyResourcesState() {
 
 void CBuyResourcesState::Start() {
 	std::cout << "Start Turn Order State\n";
+	
+	for (int i = pGameData->playerList.size() - 1; i >= 0; i--) {
+		std::cout << "It is player " << pGameData->playerList[i].GetName() << "'s turn to buy resources.\n";
+
+	}
 //	m_pOwner->NextPhase();
 }
 
