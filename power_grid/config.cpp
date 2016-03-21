@@ -1,7 +1,6 @@
 #include "config.h"
 #include "base.h"
 #include "CGameData.h"
-#include "CResourceMarket.h"
 
 void Config::LoadGame(CGameData *data) {
 	// MAT: Load everything from a save file into data
@@ -11,10 +10,10 @@ void Config::LoadGame(CGameData *data) {
 
 	//load resource market
 	auto resource_node = root.child("resources");
-	SetResources(XMLParseInt(resource_node.attribute("coal")),
-		XMLParseInt(resource_node.attribute("oil")),
-		XMLParseInt(resource_node.attribute("garbage")),
-		XMLParseInt(resource_node.attribute("uranium")));
+	//SetResources(XMLParseInt(resource_node.attribute("coal")),
+	//	XMLParseInt(resource_node.attribute("oil")),
+	//	XMLParseInt(resource_node.attribute("garbage")),
+	//	XMLParseInt(resource_node.attribute("uranium")));
 
 	//load decks
 	auto deck_node = root.child("power-plants");
@@ -101,10 +100,10 @@ void Config::SaveGame(CGameData *data) {
 
 	// serialize the resource market
 	auto resources = XMLAppendChild(root, "resources");
-	XMLAppendAttribute(resources, "coal", g_iCoalCount);
-	XMLAppendAttribute(resources, "oil", g_iOilCount);
-	XMLAppendAttribute(resources, "garbage", g_iGarbageCount);
-	XMLAppendAttribute(resources, "uranium", g_iUraniumCount);
+	XMLAppendAttribute(resources, "coal", data->market.GetCoal());
+	XMLAppendAttribute(resources, "oil", data->market.GetOil());
+	XMLAppendAttribute(resources, "garbage", data->market.GetGarbage());
+	XMLAppendAttribute(resources, "uranium", data->market.GetUranium());
 
 	// serialize players
 	auto players = XMLAppendChild(root, "players");

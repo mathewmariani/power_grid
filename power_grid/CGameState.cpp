@@ -8,6 +8,10 @@ CGameState::~CGameState() {
 
 }
 
+void CGameState::Start() {
+	std::cout << "Enter Game State!\n";
+}
+
 void CGameState::Enter() {
 	std::cout << "Enter Game State!\n";
 }

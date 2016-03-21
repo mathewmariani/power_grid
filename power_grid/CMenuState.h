@@ -14,6 +14,7 @@ public:
 	~CMenuState();
 
 	// IState
+	void Start();
 	void Enter();
 	void Exit();
 

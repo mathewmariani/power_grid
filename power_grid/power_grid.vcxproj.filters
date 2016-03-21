@@ -72,9 +72,6 @@
     <ClCompile Include="include\pugixml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CResourceMarket.cpp">
-      <Filter>Source Files\game</Filter>
-    </ClCompile>
     <ClCompile Include="CPlayerData.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
@@ -82,12 +79,6 @@
       <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="CMenuView.cpp">
-      <Filter>Source Files\view</Filter>
-    </ClCompile>
-    <ClCompile Include="CMenuLoadView.cpp">
-      <Filter>Source Files\view</Filter>
-    </ClCompile>
-    <ClCompile Include="CMenuCreateView.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
     <ClCompile Include="CBuildState.cpp">
@@ -138,8 +129,11 @@
     <ClCompile Include="CGameState.cpp">
       <Filter>Source Files\controller\states</Filter>
     </ClCompile>
-    <ClCompile Include="CInitializeState.cpp">
-      <Filter>Source Files\controller\states</Filter>
+    <ClCompile Include="CMarket.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="CMarketView.cpp">
+      <Filter>Source Files\view</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,9 +179,6 @@
     <ClInclude Include="CMenuCreateView.h">
       <Filter>Header Files\view</Filter>
     </ClInclude>
-    <ClInclude Include="CMenuLoadView.h">
-      <Filter>Header Files\view</Filter>
-    </ClInclude>
     <ClInclude Include="CBuildState.h">
       <Filter>Header Files\controller\states\game</Filter>
     </ClInclude>
@@ -212,9 +203,6 @@
     <ClInclude Include="config.h">
       <Filter>Header Files\util</Filter>
     </ClInclude>
-    <ClInclude Include="CResourceMarket.h">
-      <Filter>Header Files\game</Filter>
-    </ClInclude>
     <ClInclude Include="CDeckData.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
@@ -233,11 +221,14 @@
     <ClInclude Include="CMenuState.h">
       <Filter>Header Files\controller\states</Filter>
     </ClInclude>
-    <ClInclude Include="CInitializeState.h">
-      <Filter>Header Files\controller\states</Filter>
-    </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>Header Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="CMarket.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="CMarketView.h">
+      <Filter>Header Files\view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

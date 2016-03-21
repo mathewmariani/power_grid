@@ -11,6 +11,7 @@ public:
 	~CGameState();
 
 	// IState
+	void Start();
 	void Enter();
 	void Exit();
 

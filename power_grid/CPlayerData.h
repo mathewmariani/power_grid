@@ -4,8 +4,12 @@
 #include "CCardData.h"
 #include "CHouseData.h"
 
-class CPlayerData {
+// Common
+#include "ISubject.h"
+
+class CPlayerData : ISubject {
 public:
+	CPlayerData();
 	CPlayerData(string name);
 	CPlayerData(std::string name, int money, int coal, int oil, int garbage, int uranium, std::vector<CCardData *> cards);
 	~CPlayerData();
@@ -46,7 +50,5 @@ private:
 	int m_iUranium;
 
 	std::vector<CCardData *> m_vCard;
-	
 	std::vector<CHouseData> m_vHouse;
-
 };

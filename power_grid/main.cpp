@@ -2,20 +2,16 @@
 
 // Main States
 #include "CMenuState.h"
-#include "CInitializeState.h"
 #include "CGameState.h"
 
 #include "base.h"
 //#include "CMapData.h"
 //#include "CMapView.h"
 
-int main() {
+#include "CMarket.h"
+#include "CMarketView.h"
 
-	//CGameController game;
-	//game.AddState("menustate", new CMenuState);			// Decide if were loading or starting a new
-	//game.AddState("initstate", new CInitializeState);		// Create new game
-	//game.AddState("gamestate", new CGameState);			// where the game happens
-	//game.LoadState("menustate");
+int main() {
 
 	//CMapData testMap;
 	//CMapView mapObserver;
@@ -23,10 +19,26 @@ int main() {
 	//testMap.AddCity("Montréal", "Eastern Canada");
 	//testMap.AddCity("Ottawa", "Golden Horseshoe");
 
-	CGameController game;
-	game.AddState("menustate", new CMenuState);
-	game.AddState("gamestate", new CMenuState);
-	game.ChangeState("menustate");
+	//CGameController game;
+	//game.AddState("menu", new CMenuState);
+	//game.AddState("game", new CGameState);
+	//game.LoadState("menu");
+
+	CMarket market;
+	CMarketView view;
+
+	market.Attach(&view);
+
+	view.SetData(&market);
+	view.Render();
+
+	market.AttemptToBuyCoal();
+	market.AttemptToBuyCoal();
+	market.AttemptToBuyCoal();
+	market.AttemptToBuyCoal();
+	market.AttemptToBuyCoal();
+
+	market.AttemptToBuyUranium();
 
 	return 0;
 }

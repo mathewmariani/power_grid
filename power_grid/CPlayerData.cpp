@@ -1,8 +1,12 @@
 #include "CPlayerData.h"
 
+CPlayerData::CPlayerData() : CPlayerData(NULL) {
+
+}
+
 CPlayerData::CPlayerData(string name) :
 	m_sName(name) {
-
+	Notify();
 }
 
 CPlayerData::CPlayerData(std::string name, int money, int coal, int oil, int garbage, int uranium, std::vector<CCardData *> cards) :
@@ -99,7 +103,7 @@ void CPlayerData::Serialize(pugi::xml_node &parent) {
 	
 	for (int i = 0; i < m_vHouse.size(); i++) {
 		auto house = XMLAppendChild(player, "house");
-		XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
+		//XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
 	}
 	
 }

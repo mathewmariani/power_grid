@@ -31,9 +31,13 @@ public:
 	CGameController();
 	~CGameController();
 
+	void AddState(string name, IState* pState);
+	void LoadState(string name);
 	void NextPhase();
 
 private:
-	vector<IState *> m_States;
-	vector<IState *>::iterator m_Phase;
+//	vector<IState *> m_States;
+//	vector<IState *>::iterator m_Phase;
+
+	std::unordered_map<string, IState*> m_States;
 };

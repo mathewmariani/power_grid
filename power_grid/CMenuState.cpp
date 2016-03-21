@@ -9,20 +9,19 @@ CMenuState::~CMenuState() {
 
 }
 
+void CMenuState::Start() {
+	HandleInput();
+}
 
 void CMenuState::Enter() {
-	std::cout << "NEW GAME!\n";
-	//m_pOwner->LoadState("initstate");
-	//data.Attach(&view);
-	//view.SetData(&data);
-	//view.Render();
-
-	//HandleInput();
+	data.Attach(&view);
+	view.SetData(&data);
+	view.Render();
 }
 
 void CMenuState::Exit() {
-	//data.Detach(&view);
-	//std::cout << "Exiting\n";
+	data.Detach(&view);
+	system("cls");
 }
 
 void CMenuState::HandleInput() {
@@ -35,8 +34,7 @@ void CMenuState::HandleInput() {
 
 	switch (data.GetState()) {
 	case SELECTION_NEW:
-		std::cout << "NEW GAME!\n";
-		//m_pOwner->LoadState("initstate");
+		m_pOwner->LoadState("init");
 		break;
 	case SELECTION_LOAD:
 		// MAT: Add Logic here to load last saved game!
