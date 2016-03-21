@@ -5,6 +5,8 @@
 #include "IState.h"
 #include "ISubject.h"
 
+#include "CGameData.h"
+
 #include "base.h"
 
 class CBuyPowerPlantState : public IState, ISubject{
