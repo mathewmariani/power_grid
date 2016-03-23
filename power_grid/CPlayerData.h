@@ -7,6 +7,7 @@
 // Common
 #include "ISubject.h"
 
+
 class CPlayerData : ISubject {
 public:
 	CPlayerData();
@@ -32,11 +33,22 @@ public:
 	int GetUranium();
 	const int GetUranium() const;
 
+	void BuyCoal();
+	void BuyOil();
+	void BuyGarbage();
+	void BuyUranium();
+
 	std::vector<CHouseData> GetHouse();
 	const std::vector<CHouseData> GetHouse() const;
 
 	std::vector<CCardData *> GetCard();
 	const std::vector<CCardData *> GetCard() const;
+
+	void BuyCard(CCardData* card);
+
+	void BuyCity(CCityData* city);
+
+	void ConsumeMoney(int amount);
 
 	void Serialize(pugi::xml_node &parent);
 
@@ -48,6 +60,11 @@ private:
 	int m_iOil;
 	int m_iGarbage;
 	int m_iUranium;
+
+	int m_iMaxCoal;
+	int m_iMaxOil;
+	int m_iMaxGarbage;
+	int m_iMaxUranium;
 
 	std::vector<CCardData *> m_vCard;
 	std::vector<CHouseData> m_vHouse;

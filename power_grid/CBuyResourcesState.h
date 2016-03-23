@@ -4,6 +4,8 @@
 #include "IState.h"
 #include "ISubject.h"
 
+#include "CGameData.h"
+
 #include "base.h"
 
 class CBuyResourcesState : public IState, ISubject {
@@ -15,4 +17,8 @@ public:
 	void Start();
 	void Enter();
 	void Exit();
+
+private:
+	CMarketView m_View;
+	CMarket* m_pMarket;
 };

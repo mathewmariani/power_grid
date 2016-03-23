@@ -5,7 +5,8 @@ CPlayerData::CPlayerData() : CPlayerData(NULL) {
 }
 
 CPlayerData::CPlayerData(string name) :
-	m_sName(name) {
+	m_sName(name),
+	m_iMoney(50) {
 	Notify();
 }
 
@@ -70,6 +71,22 @@ const int CPlayerData::GetUranium() const {
 	return m_iUranium;
 }
 
+
+void CPlayerData::BuyCoal() {
+	m_iCoal++;
+}
+
+void CPlayerData::BuyOil() {
+	m_iOil++;
+}
+
+void CPlayerData::BuyGarbage() {
+	m_iGarbage++;
+}
+
+void CPlayerData::BuyUranium() {
+	m_iUranium++;
+}
 std::vector<CHouseData> CPlayerData::GetHouse() {
 	return m_vHouse;
 }
@@ -84,6 +101,43 @@ std::vector<CCardData *> CPlayerData::GetCard() {
 
 const std::vector<CCardData *> CPlayerData::GetCard() const {
 	return m_vCard;
+}
+
+void CPlayerData::BuyCard(CCardData* card) {
+	m_vCard.push_back(card);
+	int num = card->GetCost();
+	int resource = card->GetResources();
+	switch (resource)
+	{
+	case 1:
+		m_iMaxCoal += num;
+		break;
+	case 10:
+		m_iMaxOil += num;
+		break;
+	case 11:
+		m_iMaxCoal += num;
+		m_iMaxOil += num;
+		break;
+	case 100:
+		m_iMaxGarbage += num;
+		break;
+	case 1000:
+		m_iMaxUranium += num;
+		break;
+	default:
+		break;
+	}
+}
+
+void CPlayerData::BuyCity(CCityData* city) {
+	CHouseData newHouse(city);
+	m_vHouse.push_back(newHouse);
+	m_iMoney -= city->GetCost();
+}
+
+void CPlayerData::ConsumeMoney(int amount) {
+	m_iMoney -= amount;
 }
 
 void CPlayerData::Serialize(pugi::xml_node &parent) {
@@ -103,7 +157,7 @@ void CPlayerData::Serialize(pugi::xml_node &parent) {
 	
 	for (int i = 0; i < m_vHouse.size(); i++) {
 		auto house = XMLAppendChild(player, "house");
-		//XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity());
+		XMLAppendAttribute(house, "cityName", m_vHouse[i].GetCity()->GetName());
 	}
 	
 }

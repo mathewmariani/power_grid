@@ -5,11 +5,6 @@
 
 #include "base.h"
 
-enum BuyResults_e {
-	BUY_INSUFICIENT_FUNDS,
-	BUY_NOT_ENOUGH_RESOURCE,
-	BUY_SUCCEED,
-};
 
 class CMarket : public ISubject {
 public:
@@ -19,19 +14,19 @@ public:
 
 	int GetCoal();
 	const int GetCoal() const;
-	BuyResults_e AttemptToBuyCoal();
+	void SellCoal();
 
 	int GetOil();
 	const int GetOil() const;
-	BuyResults_e AttemptToBuyOil();
+	void SellOil();
 
 	int GetGarbage();
 	const int GetGarbage() const;
-	BuyResults_e AttemptToBuyGarbage();
+	void SellGarbage();
 
 	int GetUranium();
 	const int GetUranium() const;
-	BuyResults_e AttemptToBuyUranium();
+	void SellUranium();
 
 	int GetCostOfCoal();
 	const int GetCostOfCoal() const;
