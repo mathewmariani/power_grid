@@ -2,7 +2,8 @@
 
 CCityData::CCityData(std::string name, std::string region) :
 	m_sName(name),
-	m_sRegion(region) {
+	m_sRegion(region),
+	m_iCountHouses(0) {
 
 }
 
@@ -32,4 +33,19 @@ string CCityData::GetNeighbours() {
 		neighbours = neighbours + i.first + ", ";
 	}
 	return neighbours;
+}
+
+void CCityData::AddNeighbour(std::string name, int cost) {
+	// MAT: Im very surprised this works LOL
+	//std::cout << name << ": " << cost << std::endl;
+	m_vConnections.insert({ name, cost });
+
+}
+
+void CCityData::IncreaseCount() {
+	m_iCountHouses++;
+}
+
+int CCityData::GetCost() {
+	return (10 + m_iCountHouses * 5);
 }

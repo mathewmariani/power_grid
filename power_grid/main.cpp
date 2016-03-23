@@ -12,35 +12,23 @@
 #include "CMarketView.h"
 
 #include "CBuyPowerPlantState.h"
+#include "CBuyResourcesState.h"
 
 int main() {
 
-	//CMapData testMap;
-	//CMapView mapObserver;
-	//mapObserver.Initialize(&testMap);
-	//testMap.AddCity("Montréal", "Eastern Canada");
-	//testMap.AddCity("Ottawa", "Golden Horseshoe");
+	CPlayerData p1("aaa");
+	CPlayerData p2("bbb");
+	CPlayerData p3("ccc");
+	CPlayerData p4("ddd");
 
-	//CGameController game;
-	//game.AddState("menu", new CMenuState);
-	//game.AddState("game", new CGameState);
-	//game.LoadState("menu");
-	
-	CMarket market;
-	CMarketView view;
+	pGameData->playerList.push_back(p1);
+	pGameData->playerList.push_back(p2);
+	pGameData->playerList.push_back(p3);
+	pGameData->playerList.push_back(p4);
 
-	market.Attach(&view);
-
-	view.SetData(&market);
-	view.Render();
-
-	market.AttemptToBuyCoal();
-	market.AttemptToBuyCoal();
-	market.AttemptToBuyCoal();
-	market.AttemptToBuyCoal();
-	market.AttemptToBuyCoal();
-
-	market.AttemptToBuyUranium();
+	CBuyResourcesState state;
+	state.Enter();
+	state.Start();
 
 	return 0;
 }

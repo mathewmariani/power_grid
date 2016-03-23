@@ -17,4 +17,8 @@ public:
 	void Start();
 	void Enter();
 	void Exit();
+
+private:
+	CMarketView m_View;
+	CMarket* m_pMarket;
 };

@@ -14,6 +14,7 @@ void CMarketView::SetData(CMarket* pData) {
 	}
 
 	m_pData = pData;
+	m_pData->Attach(this);
 	std::cout << m_pData;
 }
 

@@ -31,14 +31,9 @@ const int CMarket::GetCoal() const {
 	return m_iCoal;
 }
 
-BuyResults_e CMarket::AttemptToBuyCoal() {
-	if (m_iCoal == 0) {
-		return BUY_NOT_ENOUGH_RESOURCE;
-	} else {
-		--m_iCoal;
-		Notify();
-		return BUY_SUCCEED;
-	}
+void CMarket::SellCoal() {
+	m_iCoal--;
+	Notify();
 }
 
 int CMarket::GetOil() {
@@ -49,16 +44,9 @@ const int CMarket::GetOil() const {
 	return m_iOil;
 }
 
-BuyResults_e CMarket::AttemptToBuyOil() {
-	if (m_iCoal == 0) {
-		return BUY_NOT_ENOUGH_RESOURCE;
-	}
-	else {
-		--m_iOil;
-		Notify();
-		return BUY_SUCCEED;
-	}
-
+void CMarket::SellOil() {
+	m_iOil--;
+	Notify();
 }
 
 int CMarket::GetGarbage() {
@@ -69,15 +57,9 @@ const int CMarket::GetGarbage() const {
 	return m_iGarbage;
 }
 
-BuyResults_e CMarket::AttemptToBuyGarbage() {
-	if (m_iGarbage == 0) {
-		return BUY_NOT_ENOUGH_RESOURCE;
-	}
-	else {
-		--m_iGarbage;
-		Notify();
-		return BUY_SUCCEED;
-	}
+void CMarket::SellGarbage() {
+	m_iGarbage--;
+	Notify();
 }
 
 int CMarket::GetUranium() {
@@ -88,15 +70,9 @@ const int CMarket::GetUranium() const {
 	return m_iUranium;
 }
 
-BuyResults_e CMarket::AttemptToBuyUranium() {
-	if (m_iUranium == 0) {
-		return BUY_NOT_ENOUGH_RESOURCE;
-	}
-	else {
-		--m_iUranium;
-		Notify();
-		return BUY_SUCCEED;
-	}
+void CMarket::SellUranium() {
+	m_iUranium--;
+	Notify();
 }
 
 int CMarket::GetCostOfCoal() {
