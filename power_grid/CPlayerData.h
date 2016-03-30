@@ -7,6 +7,10 @@
 // Common
 #include "ISubject.h"
 
+enum GenerateResults_e {
+	GENERATE_NOT_ENOUGH_FUEL,
+	GENERATE_SUCCEED
+};
 
 class CPlayerData : ISubject {
 public:
@@ -33,6 +37,18 @@ public:
 	int GetUranium();
 	const int GetUranium() const;
 
+	int GetMaxCoal();
+	const int GetMaxCoal() const;
+
+	int GetMaxOil();
+	const int GetMaxOil() const;
+
+	int GetMaxGarbage();
+	const int GetMaxGarbage() const;
+
+	int GetMaxUranium();
+	const int GetMaxUranium() const;
+
 	void BuyCoal();
 	void BuyOil();
 	void BuyGarbage();
@@ -50,6 +66,10 @@ public:
 
 	void ConsumeMoney(int amount);
 
+	GenerateResults_e GenerateElectricity(int cardNum);
+
+	int GetIncome();
+
 	void Serialize(pugi::xml_node &parent);
 
 private:
@@ -61,10 +81,13 @@ private:
 	int m_iGarbage;
 	int m_iUranium;
 
+	//The max amount of resoures a player can buy
 	int m_iMaxCoal;
 	int m_iMaxOil;
 	int m_iMaxGarbage;
 	int m_iMaxUranium;
+
+	int m_iNumberOfCitiesPoweredThisTurn;
 
 	std::vector<CCardData *> m_vCard;
 	std::vector<CHouseData> m_vHouse;

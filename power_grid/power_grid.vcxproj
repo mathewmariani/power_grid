@@ -157,6 +157,7 @@
     <ClCompile Include="CDeckView.cpp" />
     <ClCompile Include="CGameState.cpp" />
     <ClCompile Include="CHouseData.cpp" />
+    <ClCompile Include="CLogView.cpp" />
     <ClCompile Include="CMapData.cpp" />
     <ClCompile Include="CMapView.cpp" />
     <ClCompile Include="CMarket.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="CDeckView.h" />
     <ClInclude Include="CGameState.h" />
     <ClInclude Include="CHouseData.h" />
+    <ClInclude Include="CLogView.h" />
     <ClInclude Include="CMapView.h" />
     <ClInclude Include="CMarket.h" />
     <ClInclude Include="CMarketView.h" />

@@ -16,11 +16,14 @@ void CDeckView::Initialize(CDeckData *pData) {
 	m_pDeck = pData;
 	m_pDeck->Attach(this);
 
+	m_vPowerPlantMarket = m_pDeck->GetMarket();
+
 	std::cout << "DeckView has been attached to the DeckData.\n";
 }
 
-void CDeckView::Update(std::vector<CCardData> market) {
+void CDeckView::Update() {
 	m_vPowerPlantMarket = m_pDeck->GetMarket();
+	Print();
 }
 
 void CDeckView::Print() {
