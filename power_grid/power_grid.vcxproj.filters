@@ -61,9 +61,6 @@
     <Filter Include="Header Files\game">
       <UniqueIdentifier>{0b1b7452-da8c-41e7-acb1-2465775eb6e7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\decorator">
-      <UniqueIdentifier>{88731f1b-7878-4191-81d3-41f5dfbc3e03}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -238,7 +235,7 @@
     <Xml Include="deck.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="map.xml">
+    <Xml Include="map_canada.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

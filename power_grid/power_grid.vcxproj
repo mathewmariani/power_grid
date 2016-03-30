@@ -207,7 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="deck.xml" />
-    <Xml Include="map.xml" />
+    <Xml Include="map_canada.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
