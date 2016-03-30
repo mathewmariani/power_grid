@@ -138,9 +138,6 @@
     <ClCompile Include="CMarketView.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
-    <ClCompile Include="CLogView.cpp">
-      <Filter>Source Files\view</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util.h">
@@ -234,9 +231,6 @@
       <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="CMarketView.h">
-      <Filter>Header Files\view</Filter>
-    </ClInclude>
-    <ClInclude Include="CLogView.h">
       <Filter>Header Files\view</Filter>
     </ClInclude>
   </ItemGroup>
