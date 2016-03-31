@@ -2,10 +2,11 @@
 
 // Common
 #include "IState.h"
+#include "ISubject.h"
 
 #include "base.h"
 
-class CGameState : public IState {
+class CGameState : public IState, public ISubject {
 public:
 	CGameState();
 	~CGameState();

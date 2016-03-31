@@ -57,4 +57,5 @@ void CCardData::Print() {
 	std::cout << "Cost: " << m_iResourceCost << "\n";
 	std::cout << "Resource: " << m_iResources << "\n";
 	std::cout << "Powers: " << m_iNumberOfCitiesPowered << "\n";
+	std::cout << "----------------------\n";
 }

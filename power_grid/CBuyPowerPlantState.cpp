@@ -11,7 +11,7 @@ CBuyPowerPlantState::~CBuyPowerPlantState() {
 }
 
 void CBuyPowerPlantState::Start() {
-	std::cout << "Start Buy Power Plant State\n";
+	std::cout << "Start Buy Power Plant State.\n\n";
 
 	int round = 1;
 	int biddingPrice, index;

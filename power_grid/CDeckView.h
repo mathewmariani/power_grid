@@ -13,7 +13,7 @@ public:
 
 	void Initialize(CDeckData *pData);
 
-	void Update(std::vector<CCardData> market);
+	void Update();
 
 	void Print();
 private:

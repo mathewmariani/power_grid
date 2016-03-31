@@ -4,6 +4,8 @@
 #include "IState.h"
 #include "ISubject.h"
 
+#include "CGameData.h"
+
 #include "base.h"
 
 class CBuildState : public IState, ISubject {

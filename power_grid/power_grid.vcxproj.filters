@@ -235,7 +235,7 @@
     <Xml Include="deck.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="map.xml">
+    <Xml Include="map_canada.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

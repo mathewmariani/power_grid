@@ -25,5 +25,4 @@ private:
 	std::vector<CCardData> m_vInMarket;
 	std::vector<CCardData> m_vInHold;
 	std::vector<CCardData> m_vDiscarded;
-
 };
